@@ -32,7 +32,7 @@ Telegraf Se encarga de recolectar la información que le especificamos en la con
 &lt;h4 id=&#34;mysql-no-obligatorio&#34;&gt;MySQL (no obligatorio)&lt;/h4&gt;
 &lt;p&gt;Grafana viene de base con una base de datos SQLite que emplea para guardar sus usuarios, contraseñas, datasources etc. En la gran mayoría de casos esto sería suficiente, pero, Ramón me puso el desafío extra de substituir esa base de datos por un container de MySQL. Así que también lo usaré.&lt;/p&gt;
 &lt;h3 id=&#34;objetivo-final&#34;&gt;Objetivo final&lt;/h3&gt;
-&lt;p&gt;Monitorizar los recursos de todos los servers desde S30 con un container de Grafana que se pueda ver desde la dirección de grafana.labs.pue.es. También que ese Grafana reciba la información desde un container de InfluxDB, que a su vez, recibirá la información de Telegrafs que estarán instalados tanto en local como en el resto de servers.&lt;/p&gt;
+&lt;p&gt;Monitorizar los recursos de todos los servers desde el server central con un container de Grafana que se pueda ver desde la dirección de grafana.labs.pue.es. También que ese Grafana reciba la información desde un container de InfluxDB, que a su vez, recibirá la información de Telegrafs que estarán instalados tanto en local como en el resto de servers.&lt;/p&gt;
 &lt;h3 id=&#34;pasos-seguidos&#34;&gt;Pasos seguidos&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;☒ Instalar una instancia básica en una máquina virtual&lt;/li&gt;
@@ -40,15 +40,15 @@ Telegraf Se encarga de recolectar la información que le especificamos en la con
 &lt;li&gt;☒ Explicar que representa la interfaz&lt;/li&gt;
 &lt;li&gt;☒ Instalar en múltiples hosts con un solo dB
 &lt;ul&gt;
-&lt;li&gt;☒ Hacer Docker-compose para S30 con InfluxDB Grafana Y MySQL
+&lt;li&gt;☒ Hacer Docker-compose para el server central con InfluxDB Grafana Y MySQL
 &lt;ul&gt;
 &lt;li&gt;☒ Escribir-lo&lt;/li&gt;
 &lt;li&gt;☒ Probarlo&lt;/li&gt;
 &lt;li&gt;☒ Solucionar el error con el container del grafana&lt;/li&gt;
 &lt;li&gt;☒ Preguntar a Ramón que le parece el compose&lt;/li&gt;
-&lt;li&gt;☒ Probarlo en s30
+&lt;li&gt;☒ Probarlo en el server central
 &lt;ul&gt;
-&lt;li&gt;☒ Solucionar error al acceder desde un buscador web al grafana en s30&lt;/li&gt;
+&lt;li&gt;☒ Solucionar error al acceder desde un buscador web al grafana en el server central&lt;/li&gt;
 &lt;li&gt;☒ Hacer que se pueda acceder a grafana desde https con traefik&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -142,7 +142,7 @@ create user user_que_quieras with password &amp;#39;la_contra_que_quieras&amp;#3
 &lt;p&gt;Foto del resultado:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;http://santiagopastor.xyz/Pasted_image_20220628131116.png?1658297391991&#34; alt=&#34;Pastedimage20220628131116.png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;2-instalación-en-los-servidores-reales&#34;&gt;2 Instalación en los servidores reales&lt;/h3&gt;
-&lt;h4 id=&#34;21-instalar-en-s30-influxdb-y-grafana-con-mysql-con-containers-y-telegraf-como-servicio&#34;&gt;2.1 Instalar en s30 InfluxDB y Grafana con MySQL con containers y Telegraf como servicio&lt;/h4&gt;
+&lt;h4 id=&#34;21-instalar-en-el-server-central-influxdb-y-grafana-con-mysql-con-containers-y-telegraf-como-servicio&#34;&gt;2.1 Instalar en el server central InfluxDB y Grafana con MySQL con containers y Telegraf como servicio&lt;/h4&gt;
 &lt;p&gt;Creamos los contenedores de Grafana, InfluxDB y MySQL con el siguiente compose:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;version&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -215,7 +215,7 @@ create user user_que_quieras with password &amp;#39;la_contra_que_quieras&amp;#3
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;grafana-db&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;traefik&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;external&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Este docker-compose, aparte de levantar los contenedores, abre el puerto 8086 desde la IP 10.91.240.155 como si fuera el puerto 8086 de la máquina host. Utilizaremos esa IP y puerto después cuando hagamos que telegraf envíe los datos hacia la base de datos en S30.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Este docker-compose, aparte de levantar los contenedores, abre el puerto 8086 desde la IP 10.91.240.155 como si fuera el puerto 8086 de la máquina host. Utilizaremos esa IP y puerto después cuando hagamos que telegraf envíe los datos hacia la base de datos en el server central.&lt;/p&gt;
 &lt;p&gt;Para poder hacer que Traefik traduzca el nombre y nos proporcione HTTPS hay que añadir las siguientes líneas al docker-compose.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;labels&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Para decirle a traefik que exponga este container&lt;/span&gt;
@@ -232,7 +232,7 @@ create user user_que_quieras with password &amp;#39;la_contra_que_quieras&amp;#3
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana_s.tls.certresolver=letsencrypt&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Le indica la red en la que se encuentra el container de traefik&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.docker.network=traefik&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;El archivo telegraf.conf que usaremos para enviar datos desde todos los servers a S30 es el siguiente:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;El archivo telegraf.conf que usaremos para enviar datos desde todos los servers a el server central es el siguiente:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Configuration for sending metrics to InfluxDB&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#ae81ff&#34;&gt;outputs.influxdb]]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;## The full HTTP or UDP URL for your InfluxDB instance.&lt;/span&gt;
