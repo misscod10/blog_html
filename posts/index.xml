@@ -13,12 +13,12 @@
       <pubDate>Tue, 26 Jul 2022 20:17:02 +0200</pubDate>
       
       <guid>http://santiagopastor.xyz/posts/grafana/</guid>
-      <description>Proyecto Grafana Introducción En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de todos los servidores desde una interfaz web.
+      <description>Proyecto Grafana Introducción En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.
 Programas y herramientas necesarias Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.
 Telegraf Se encarga de recolectar la información que le especificamos en la configuración (Ej.: CPU/RAM/LOAD) y los envía al output configurado (Ej.</description>
       <content>&lt;h1 id=&#34;proyecto-grafana&#34;&gt;Proyecto Grafana&lt;/h1&gt;
 &lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;
-&lt;p&gt;En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de todos los servidores desde una interfaz web.&lt;/p&gt;
+&lt;p&gt;En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.&lt;/p&gt;
 &lt;h3 id=&#34;programas-y-herramientas-necesarias&#34;&gt;Programas y herramientas necesarias&lt;/h3&gt;
 &lt;p&gt;Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.&lt;/p&gt;
 &lt;h4 id=&#34;telegraf&#34;&gt;Telegraf&lt;/h4&gt;
@@ -26,13 +26,14 @@ Telegraf Se encarga de recolectar la información que le especificamos en la con
 &lt;h4 id=&#34;influxdb&#34;&gt;InfluxDB&lt;/h4&gt;
 &lt;p&gt;Es una base de datos en tiempo real escrita en Go. Es a donde Telegraf va a mandar la información.&lt;/p&gt;
 &lt;h4 id=&#34;grafana&#34;&gt;Grafana&lt;/h4&gt;
-&lt;p&gt;Es el Dashboard que se encarga de representar toda la información que InfluxDB tiene almacenado. Accederemos a este servicio desde la dirección grafana.labs.pue.es.&lt;/p&gt;
+&lt;p&gt;Es el Dashboard que se encarga de representar toda la información que InfluxDB tiene almacenado. Accederemos a este servicio desde la dirección localhost:3000.&lt;/p&gt;
 &lt;h4 id=&#34;traefik&#34;&gt;Traefik&lt;/h4&gt;
 &lt;p&gt;Es la proxy inversa que vamos a utilizar para implementar el protocolo HTTPS cuando accedamos al dashboard web del Grafana y para hacer la traducción del nombre grafana.labs.pue.es a la IP y puerto del servicio (puerto 3000).&lt;/p&gt;
 &lt;h4 id=&#34;mysql-no-obligatorio&#34;&gt;MySQL (no obligatorio)&lt;/h4&gt;
-&lt;p&gt;Grafana viene de base con una base de datos SQLite que emplea para guardar sus usuarios, contraseñas, datasources etc. En la gran mayoría de casos esto sería suficiente, pero, Ramón me puso el desafío extra de substituir esa base de datos por un container de MySQL. Así que también lo usaré.&lt;/p&gt;
-&lt;h3 id=&#34;objetivo-final&#34;&gt;Objetivo final&lt;/h3&gt;
-&lt;p&gt;Monitorizar los recursos de todos los servers desde el server central con un container de Grafana que se pueda ver desde la dirección de grafana.labs.pue.es. También que ese Grafana reciba la información desde un container de InfluxDB, que a su vez, recibirá la información de Telegrafs que estarán instalados tanto en local como en el resto de servers.&lt;/p&gt;
+&lt;p&gt;Grafana viene de base con una base de datos SQLite que emplea para guardar sus usuarios, contraseñas, datasources etc. En la gran mayoría de casos esto sería suficiente, pero, me he puesto como desafío utilizar una MySQL en vez de la SQLite.&lt;/p&gt;
+&lt;h3 id=&#34;esquema-final&#34;&gt;Esquema Final&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;http://santiagopastor.xyz/Diagrama1.png&#34; alt=&#34;Diagrama de Grafana&#34; title=&#34;Diagrama de grafana&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Telegraf recogerá los datos de cada màquina y los enviará a la base de datos InfluxDB que está en el server central. Una vez los datos están en la base de datos, Grafana enviarà una request cada 10s para saber los datos que tengamos configurados en el dashboard y representarlos.&lt;/p&gt;
 &lt;h3 id=&#34;pasos-seguidos&#34;&gt;Pasos seguidos&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;☒ Instalar una instancia básica en una máquina virtual&lt;/li&gt;
@@ -45,7 +46,6 @@ Telegraf Se encarga de recolectar la información que le especificamos en la con
 &lt;li&gt;☒ Escribir-lo&lt;/li&gt;
 &lt;li&gt;☒ Probarlo&lt;/li&gt;
 &lt;li&gt;☒ Solucionar el error con el container del grafana&lt;/li&gt;
-&lt;li&gt;☒ Preguntar a Ramón que le parece el compose&lt;/li&gt;
 &lt;li&gt;☒ Probarlo en el server central
 &lt;ul&gt;
 &lt;li&gt;☒ Solucionar error al acceder desde un buscador web al grafana en el server central&lt;/li&gt;

@@ -6,7 +6,7 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Proyecto Grafana Introducción En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de todos los servidores desde una interfaz web.
+<meta name="description" content="Proyecto Grafana Introducción En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.
 Programas y herramientas necesarias Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.
 Telegraf Se encarga de recolectar la información que le especificamos en la configuración (Ej.: CPU/RAM/LOAD) y los envía al output configurado (Ej." />
 <meta name="keywords" content="" />
@@ -38,7 +38,7 @@ Telegraf Se encarga de recolectar la información que le especificamos en la con
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Grafana">
-<meta property="og:description" content="Proyecto Grafana Introducción En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de todos los servidores desde una interfaz web.
+<meta property="og:description" content="Proyecto Grafana Introducción En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.
 Programas y herramientas necesarias Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.
 Telegraf Se encarga de recolectar la información que le especificamos en la configuración (Ej.: CPU/RAM/LOAD) y los envía al output configurado (Ej." />
 <meta property="og:url" content="http://santiagopastor.xyz/posts/grafana/" />
@@ -112,7 +112,7 @@ Telegraf Se encarga de recolectar la información que le especificamos en la con
   <div class="post-content"><div>
         <h1 id="proyecto-grafana">Proyecto Grafana<a href="#proyecto-grafana" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
 <h2 id="introducción">Introducción<a href="#introducción" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<p>En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de todos los servidores desde una interfaz web.</p>
+<p>En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.</p>
 <h3 id="programas-y-herramientas-necesarias">Programas y herramientas necesarias<a href="#programas-y-herramientas-necesarias" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.</p>
 <h4 id="telegraf">Telegraf<a href="#telegraf" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
@@ -120,13 +120,14 @@ Telegraf Se encarga de recolectar la información que le especificamos en la con
 <h4 id="influxdb">InfluxDB<a href="#influxdb" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
 <p>Es una base de datos en tiempo real escrita en Go. Es a donde Telegraf va a mandar la información.</p>
 <h4 id="grafana">Grafana<a href="#grafana" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
-<p>Es el Dashboard que se encarga de representar toda la información que InfluxDB tiene almacenado. Accederemos a este servicio desde la dirección grafana.labs.pue.es.</p>
+<p>Es el Dashboard que se encarga de representar toda la información que InfluxDB tiene almacenado. Accederemos a este servicio desde la dirección localhost:3000.</p>
 <h4 id="traefik">Traefik<a href="#traefik" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
 <p>Es la proxy inversa que vamos a utilizar para implementar el protocolo HTTPS cuando accedamos al dashboard web del Grafana y para hacer la traducción del nombre grafana.labs.pue.es a la IP y puerto del servicio (puerto 3000).</p>
 <h4 id="mysql-no-obligatorio">MySQL (no obligatorio)<a href="#mysql-no-obligatorio" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
-<p>Grafana viene de base con una base de datos SQLite que emplea para guardar sus usuarios, contraseñas, datasources etc. En la gran mayoría de casos esto sería suficiente, pero, Ramón me puso el desafío extra de substituir esa base de datos por un container de MySQL. Así que también lo usaré.</p>
-<h3 id="objetivo-final">Objetivo final<a href="#objetivo-final" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>Monitorizar los recursos de todos los servers desde el server central con un container de Grafana que se pueda ver desde la dirección de grafana.labs.pue.es. También que ese Grafana reciba la información desde un container de InfluxDB, que a su vez, recibirá la información de Telegrafs que estarán instalados tanto en local como en el resto de servers.</p>
+<p>Grafana viene de base con una base de datos SQLite que emplea para guardar sus usuarios, contraseñas, datasources etc. En la gran mayoría de casos esto sería suficiente, pero, me he puesto como desafío utilizar una MySQL en vez de la SQLite.</p>
+<h3 id="esquema-final">Esquema Final<a href="#esquema-final" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><img src="/Diagrama1.png" alt="Diagrama de Grafana" title="Diagrama de grafana"></p>
+<p>Telegraf recogerá los datos de cada màquina y los enviará a la base de datos InfluxDB que está en el server central. Una vez los datos están en la base de datos, Grafana enviarà una request cada 10s para saber los datos que tengamos configurados en el dashboard y representarlos.</p>
 <h3 id="pasos-seguidos">Pasos seguidos<a href="#pasos-seguidos" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <ul>
 <li>☒ Instalar una instancia básica en una máquina virtual</li>
@@ -139,7 +140,6 @@ Telegraf Se encarga de recolectar la información que le especificamos en la con
 <li>☒ Escribir-lo</li>
 <li>☒ Probarlo</li>
 <li>☒ Solucionar el error con el container del grafana</li>
-<li>☒ Preguntar a Ramón que le parece el compose</li>
 <li>☒ Probarlo en el server central
 <ul>
 <li>☒ Solucionar error al acceder desde un buscador web al grafana en el server central</li>
