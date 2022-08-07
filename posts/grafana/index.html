@@ -1,134 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
+
 <head>
-  
-    <title>Grafana :: santiagopastor.xyz</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Proyecto Grafana Introducción En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.
-Programas y herramientas necesarias Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.
-Telegraf Se encarga de recolectar la información que le especificamos en la configuración (Ej.: CPU/RAM/LOAD) y los envía al output configurado (Ej." />
-<meta name="keywords" content="" />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="http://santiagopastor.xyz/posts/grafana/" />
+    
+<title>Grafana - Knowlege Archive</title>
+
+<meta property="og:title" content="Grafana - Knowlege Archive">
+
+
+
+    
+
+
+
+    
+    <meta property="description" content="En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.
+[&amp;hellip;] Para cumplir este objetivo, utilizaré &amp;hellip;">
+    <meta property="og:description" content="En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.
+[&amp;hellip;] Para cumplir este objetivo, utilizaré &amp;hellip;">
+    
+
+
+
+<meta property="keywords" content ="grafana, influxdb, telegraf, ansible">
 
 
 
 
-<link rel="stylesheet" href="http://santiagopastor.xyz/assets/style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <link rel="stylesheet" href="assets/%25!s%28%3cnil%3e%29.css">
-
-
-
+<link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAl2chF0OuqvNKaMXWlh9GPn5vlHpSl0pXgQ&amp;usqp=CAU" type="image/x-icon" />
 
 
 
-<link rel="apple-touch-icon" href="http://santiagopastor.xyz/img/apple-touch-icon-192x192.png">
+<link rel="stylesheet" href="/css/style.min.css" />
 
-  <link rel="shortcut icon" href="http://santiagopastor.xyz/img/favicon/orange.png">
-
-
-
-<meta name="twitter:card" content="summary" />
-
-
-
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Grafana">
-<meta property="og:description" content="Proyecto Grafana Introducción En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.
-Programas y herramientas necesarias Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.
-Telegraf Se encarga de recolectar la información que le especificamos en la configuración (Ej.: CPU/RAM/LOAD) y los envía al output configurado (Ej." />
-<meta property="og:url" content="http://santiagopastor.xyz/posts/grafana/" />
-<meta property="og:site_name" content="santiagopastor.xyz" />
-
-  
-    <meta property="og:image" content="img/favicon/%!s().png">
-  
-
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
-
-
-  <meta property="article:published_time" content="2022-07-26 20:17:02 &#43;0200 CEST" />
+<link rel="stylesheet" href="/css/reset.min.css" />
 
 
 
 
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.3.2/highlight.min.js"></script>
+
+<script>
+hljs.configure({ ignoreUnescapedHTML: true })
+hljs.highlightAll();
+</script>
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 
 
+<link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.3.2/styles/an-old-hope.min.css" rel="stylesheet" />
 
 
 
-
+    <style>
+        .post-content img {
+            max-width: 400px;
+        }
+    </style>
 </head>
-<body class="">
 
-
-<div class="container headings--one-size">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="http://santiagopastor.xyz/">
-  <div class="logo">
-    Terminal
-  </div>
-</a>
-
-    </div>
-    
-  </div>
-  
-</header>
-
-
-  <div class="content">
-    
-<div class="post">
-  <h1 class="post-title">
-    <a href="http://santiagopastor.xyz/posts/grafana/">Grafana</a></h1>
-  <div class="post-meta">
-    
-      <span class="post-date">
-        2022-07-26
+<body id="period" class="home blog">
+    <a class="skip-content" href="#main">Press "Enter" to skip to content</a>
+    <div id="overflow-container" class="overflow-container">
+        <header class="site-header" id="site-header" role="banner">
+    <div class="max-width">
+        <div id="title-container" class="title-container">
+            <div id="site-title" class="site-title"><a href="/">Knowlege Archive</a></div>
+            <p class="tagline">Un repositorio de mis apuntes</p>
+        </div>
         
-      </span>
-    
-    
-    
-  </div>
-
-  
-  
-
-
-  
-
-  <div class="post-content"><div>
-        <h1 id="proyecto-grafana">Proyecto Grafana<a href="#proyecto-grafana" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
-<h2 id="introducción">Introducción<a href="#introducción" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+        <div id="menu-primary-container" class="menu-primary-container">
+            <div class="icon-container">
+            </div>
+            <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+                <nav class="menu">
+                    <ul id="menu-primary-items" class="menu-primary-items">
+                        
+                        
+                        <li id="menu-item-0"
+                            class="menu-item menu-item-type-custom menu-item-object-custom ">
+                            <a href="/" aria-current="page" tabindex="0">Home</a></li>
+                        
+                        <li id="menu-item-1"
+                            class="menu-item menu-item-type-custom menu-item-object-custom ">
+                            <a href="/about/" aria-current="page" tabindex="1">About</a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+        <div id="primary-container" class="primary-container">
+            <div class="max-width">
+                <section id="main" class="main" role="main">
+                    <div id="loop-container" class="loop-container">
+                        <div
+                            class="post type-post status-publish format-standard hentry entry">
+                            <article>
+                                <div class="post-container">
+                                    <div class="post-header">
+                                        <h2 class="post-title">
+                                            <a href="/posts/grafana/">Grafana</a>
+                                        </h2>
+                                        
+                                        <div class="post-byline">Published on
+                                            <a class="date" href="javascript:;">2022/07/26</a>
+                                            
+                                            
+                                            
+                                            By 
+                                            <a class="author" href="javascript:;">Santiago Pastor Serrano</a></div>
+                                            
+                                        
+                                    </div>
+                                    <div class="post-content">
+                                        <h1 id="proyecto-grafana">Proyecto Grafana</h1>
+<h2 id="introducción">Introducción</h2>
 <p>En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.</p>
-<h3 id="programas-y-herramientas-necesarias">Programas y herramientas necesarias<a href="#programas-y-herramientas-necesarias" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="programas-y-herramientas-necesarias">Programas y herramientas necesarias</h3>
 <p>Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.</p>
-<h4 id="telegraf">Telegraf<a href="#telegraf" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="telegraf">Telegraf</h4>
 <p>Se encarga de recolectar la información que le especificamos en la configuración (Ej.: CPU/RAM/LOAD) y los envía al output configurado (Ej.: una base de datos).</p>
-<h4 id="influxdb">InfluxDB<a href="#influxdb" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="influxdb">InfluxDB</h4>
 <p>Es una base de datos en tiempo real escrita en Go. Es a donde Telegraf va a mandar la información.</p>
-<h4 id="grafana">Grafana<a href="#grafana" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="grafana">Grafana</h4>
 <p>Es el Dashboard que se encarga de representar toda la información que InfluxDB tiene almacenado. Accederemos a este servicio desde la dirección localhost:3000.</p>
-<h4 id="traefik">Traefik<a href="#traefik" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="traefik">Traefik</h4>
 <p>Es la proxy inversa que vamos a utilizar para implementar el protocolo HTTPS cuando accedamos al dashboard web del Grafana y para hacer la traducción del nombre grafana.labs.pue.es a la IP y puerto del servicio (puerto 3000).</p>
-<h4 id="mysql-no-obligatorio">MySQL (no obligatorio)<a href="#mysql-no-obligatorio" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="mysql-no-obligatorio">MySQL (no obligatorio)</h4>
 <p>Grafana viene de base con una base de datos SQLite que emplea para guardar sus usuarios, contraseñas, datasources etc. En la gran mayoría de casos esto sería suficiente, pero, me he puesto como desafío utilizar una MySQL en vez de la SQLite.</p>
-<h3 id="esquema-final">Esquema Final<a href="#esquema-final" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="esquema-final">Esquema Final</h3>
 <p><img src="/Diagrama1.png" alt="Diagrama de Grafana" title="Diagrama de grafana"></p>
 <p>Telegraf recogerá los datos de cada màquina y los enviará a la base de datos InfluxDB que está en el server central. Una vez los datos están en la base de datos, Grafana enviarà una request cada 10s para saber los datos que tengamos configurados en el dashboard y representarlos.</p>
-<h3 id="pasos-seguidos">Pasos seguidos<a href="#pasos-seguidos" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="pasos-seguidos">Pasos seguidos</h3>
 <ul>
 <li>☒ Instalar una instancia básica en una máquina virtual</li>
 <li>☒ Crea interfaz para entender como funcionan las queries de Influx</li>
@@ -164,47 +174,48 @@ Telegraf Se encarga de recolectar la información que le especificamos en la con
 </li>
 <li>☒ Documentar el proceso</li>
 </ul>
-<h2 id="documentación-del-proceso">Documentación del proceso<a href="#documentación-del-proceso" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<h3 id="1-hacer-una-instalación-de-prueba-en-una-máquina-virtual-ubuntu-server">1. Hacer una instalación de prueba en una máquina virtual Ubuntu Server.<a href="#1-hacer-una-instalación-de-prueba-en-una-máquina-virtual-ubuntu-server" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<h4 id="11-preparaciones-pre-instalación">1.1 Preparaciones pre-instalación<a href="#11-preparaciones-pre-instalación" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h2 id="documentación-del-proceso">Documentación del proceso</h2>
+<h3 id="1-hacer-una-instalación-de-prueba-en-una-máquina-virtual-ubuntu-server">1. Hacer una instalación de prueba en una máquina virtual Ubuntu Server.</h3>
+<h4 id="11-preparaciones-pre-instalación">1.1 Preparaciones pre-instalación</h4>
 <p>Antes de instalar nada, hacemos un &ldquo;update&rdquo; para tener los últimos repositorios y ejecutamos la orden siguiente para instalar los programas que necesitaremos para la instalación:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install curl gnupg gnupg1 gnupg2 net-tools software-properties-common
-</span></span></code></pre></div><p>Estas herramientas suelen venir instaladas en la gran mayoría de distribuciones, pero no las encontraremos en una instalación de Ubuntu server mínima, así que viene bien ejecutarlo para asegurarse de que están, ya que son las herramientas que nos permitirán añadir repositorios extras.</p>
-<h3 id="12-instalamos-el-software">1.2 Instalamos el software<a href="#12-instalamos-el-software" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>sudo apt install curl gnupg gnupg1 gnupg2 net-tools software-properties-common
+</code></pre>
+<p>Estas herramientas suelen venir instaladas en la gran mayoría de distribuciones, pero no las encontraremos en una instalación de Ubuntu server mínima, así que viene bien ejecutarlo para asegurarse de que están, ya que son las herramientas que nos permitirán añadir repositorios extras.</p>
+<h3 id="12-instalamos-el-software">1.2 Instalamos el software</h3>
 <p>Añadimos el repositorio de Influx para poder instalar Telegraf y InfluxDB:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>source /etc/lsb-release
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;deb https://repos.influxdata.com/</span><span style="color:#e6db74">${</span>DISTRIB_ID,,<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span>DISTRIB_CODENAME<span style="color:#e6db74">}</span><span style="color:#e6db74"> stable&#34;</span> | sudo tee /etc/apt/sources.list.d/influxdb.list
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo curl -sL https://repos.influxdata.com/influxdb.key <span class="p">|</span> sudo apt-key add -
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">source</span> /etc/lsb-release
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;deb https://repos.influxdata.com/</span><span class="si">${</span><span class="nv">DISTRIB_ID</span><span class="p">,,</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">DISTRIB_CODENAME</span><span class="si">}</span><span class="s2"> stable&#34;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/influxdb.list
 </span></span></code></pre></div><p>Después actualizamos el listado de paquetes de los repositorios y instalamos InfluxDB:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo apt install influxdb
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo apt install influxdb
 </span></span></code></pre></div><p>Iniciamos el servicio y lo activamos para que cada vez que se encienda la máquina, se encienda el servicio:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl start influxdb
-</span></span><span style="display:flex;"><span>sudo systemctl enable influxdb
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl start influxdb
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> influxdb
 </span></span></code></pre></div><p>Para terminar de configurar Influx entramos en su terminal, creamos una base de datos y un usuario para la misma:</p>
 <pre tabindex="0"><code class="language-influx" data-lang="influx">influx
 create database telegraf
 create user user_que_quieras with password &#39;la_contra_que_quieras&#39;
 </code></pre><p>Después instalamos telegraf y activamos su servicio:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install telegraf
-</span></span><span style="display:flex;"><span>sudo systemctl start telegraf
-</span></span><span style="display:flex;"><span>sudo systemctl enable telegraf
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install telegraf
+</span></span><span class="line"><span class="cl">sudo systemctl start telegraf
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> telegraf
 </span></span></code></pre></div><p>Más tarde entramos en el archivo /etc/telegraf/telegraf.conf y vamos a la sección <code>[[outputs.influxdb]]</code> y des-comentamos la línea que contiene lo siguiente:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ae81ff">urls = [&#34;http://localhost:8086&#34;]</span>
-</span></span></code></pre></div><p>En esa línea se especifica la URL a la que Telegraf enviara sus datos y al puerto al que lo hará. En este caso, es localhost porque es una instalación que solo se comunicara consigo misma.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="l">urls = [&#34;http://localhost:8086&#34;]</span><span class="w">
+</span></span></span></code></pre></div><p>En esa línea se especifica la URL a la que Telegraf enviara sus datos y al puerto al que lo hará. En este caso, es localhost porque es una instalación que solo se comunicara consigo misma.</p>
 <p>Después añadimos el repositorio de grafana:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-</span></span><span style="display:flex;"><span>sudo add-apt-repository <span style="color:#e6db74">&#34;deb https://packages.grafana.com/oss/deb stable main&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo wget -q -O - https://packages.grafana.com/gpg.key <span class="p">|</span> sudo apt-key add -
+</span></span><span class="line"><span class="cl">sudo add-apt-repository <span class="s2">&#34;deb https://packages.grafana.com/oss/deb stable main&#34;</span>
 </span></span></code></pre></div><p>Actualizamos los repositorios e instalamos grafana:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get update -y
-</span></span><span style="display:flex;"><span>sudo apt-get install grafana -y
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get update -y
+</span></span><span class="line"><span class="cl">sudo apt-get install grafana -y
 </span></span></code></pre></div><p>Y por último activamos e iniciamos el servicio grafana-server:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl start grafana-server
-</span></span><span style="display:flex;"><span>systemctl enable grafana-server
-</span></span></code></pre></div><h4 id="13-configuración-de-grafana">1.3 Configuración de Grafana<a href="#13-configuración-de-grafana" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl start grafana-server
+</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> grafana-server
+</span></span></code></pre></div><h4 id="13-configuración-de-grafana">1.3 Configuración de Grafana</h4>
 <p>Para entrar a la UI de grafana, accedemos desde el buscador a la URL lohalhost:3000:</p>
 <p><img src="/Pasted_image_20220627124826.png" alt="Pastedimage20220627124826.png" title=""></p>
 <p>El login por default es admin:admin, pero una vez entras te obliga a cambiar de contraseña.</p>
@@ -219,7 +230,7 @@ create user user_que_quieras with password &#39;la_contra_que_quieras&#39;
 <p><img src="/Pasted_image_20220627125946.png?1658297391991" alt="Pastedimage20220627125946.png"></p>
 <p>También se pueden importar dashboards enteros desde dashboard&gt;import utilizando el ID del dashboard que se quiere importar, su URL o subiendo un archivo .json:</p>
 <p><img src="/Pasted_image_20220627130210.png?1658297391991" alt="Pastedimage20220627130210.png"></p>
-<h4 id="14-mi-interfaz-personalizada">1.4 Mi interfaz personalizada<a href="#14-mi-interfaz-personalizada" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="14-mi-interfaz-personalizada">1.4 Mi interfaz personalizada</h4>
 <p>De momento, he hecho que Grafana exponga:</p>
 <ul>
 <li>Tiempo que lleva la máquina encendida</li>
@@ -235,241 +246,404 @@ create user user_que_quieras with password &#39;la_contra_que_quieras&#39;
 </ul>
 <p>Foto del resultado:</p>
 <p><img src="/Pasted_image_20220628131116.png?1658297391991" alt="Pastedimage20220628131116.png"></p>
-<h3 id="2-instalación-en-los-servidores-reales">2 Instalación en los servidores reales<a href="#2-instalación-en-los-servidores-reales" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<h4 id="21-instalar-en-el-server-central-influxdb-y-grafana-con-mysql-con-containers-y-telegraf-como-servicio">2.1 Instalar en el server central InfluxDB y Grafana con MySQL con containers y Telegraf como servicio<a href="#21-instalar-en-el-server-central-influxdb-y-grafana-con-mysql-con-containers-y-telegraf-como-servicio" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h3 id="2-instalación-en-los-servidores-reales">2 Instalación en los servidores reales</h3>
+<h4 id="21-instalar-en-el-server-central-influxdb-y-grafana-con-mysql-con-containers-y-telegraf-como-servicio">2.1 Instalar en el server central InfluxDB y Grafana con MySQL con containers y Telegraf como servicio</h4>
 <p>Creamos los contenedores de Grafana, InfluxDB y MySQL con el siguiente compose:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">mysql</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">mysql</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;MYSQL_ROOT_PASSWORD=MaNF48Fc&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;MYSQL_DATABASE=grafana&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;MYSQL_USER=administrador&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;MYSQL_PASSWORD=MaNF48Fc&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/data/mysql/grafana:/var/lib/mysql</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">grafana-db </span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">influx</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">influxdb:1.8.4-alpine</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">influxdb</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;10.91.240.155:8086:8086&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;INFLUXDB_REPORTING_DISABLED=true&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;INFLUXDB_DB=influx&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;INFLUXDB_ADMIN_USER=administrador&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;INFLUXDB_ADMIN_PASSWORD=MaNF48Fc&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;INFLUXDB_WRITE_USER=&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;INFLUXDB_WRITE_USER_PASSWORD=&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;INFLUXDB_DATA_QUERY_LOG_ENABLED=false&#34;</span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/data/influxdb/data:/var/lib/influxdb</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">grafana-db </span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">grafana</span>:
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">grafana/grafana</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">grafana</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">mysql</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_SERVER_DOMAIN=&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_SERVER_ROOT_URL&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_SECURITY_ADMIN_PASSWORD=&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_DATABASE_TYPE=mysql&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_DATABASE_SSL_MODE=verify-full&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_DATABASE_NAME=grafana&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_DATABASE_USER=administrador&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_DATABASE_HOST=mysql&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_DATABASE_PASSWORD=MaNF48Fc&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_ANALYTICS_REPORTING_ENABLED=false&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GF_PATHS_PLUGINS=/plugins&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/data/grafana/plugins:/plugins</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.enable=true</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.routers.grafana.rule=Host(`grafana.labs.pue.es`)</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.routers.grafana.entrypoints=web</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.routers.grafana_s.rule=Host(`grafana.labs.pue.es`)</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.routers.grafana_s.entrypoints=web-secure</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.routers.grafana_s.tls.certresolver=letsencrypt</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.docker.network=traefik</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">grafana-db</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">networks</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">grafana-db</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">traefik</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">external</span>: <span style="color:#66d9ef">true</span>
-</span></span></code></pre></div><p>Este docker-compose, aparte de levantar los contenedores, abre el puerto 8086 desde la IP 10.91.240.155 como si fuera el puerto 8086 de la máquina host. Utilizaremos esa IP y puerto después cuando hagamos que telegraf envíe los datos hacia la base de datos en el server central.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mysql</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;MYSQL_ROOT_PASSWORD=MaNF48Fc&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;MYSQL_DATABASE=grafana&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;MYSQL_USER=administrador&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;MYSQL_PASSWORD=MaNF48Fc&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/data/mysql/grafana:/var/lib/mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">grafana-db </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">influx</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">influxdb:1.8.4-alpine</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">influxdb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;10.91.240.155:8086:8086&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;INFLUXDB_REPORTING_DISABLED=true&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;INFLUXDB_DB=influx&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;INFLUXDB_ADMIN_USER=administrador&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;INFLUXDB_ADMIN_PASSWORD=MaNF48Fc&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;INFLUXDB_WRITE_USER=&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;INFLUXDB_WRITE_USER_PASSWORD=&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;INFLUXDB_DATA_QUERY_LOG_ENABLED=false&#34;</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/data/influxdb/data:/var/lib/influxdb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">grafana-db </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">grafana</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">grafana/grafana</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">grafana</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_SERVER_DOMAIN=&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_SERVER_ROOT_URL&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_SECURITY_ADMIN_PASSWORD=&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_DATABASE_TYPE=mysql&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_DATABASE_SSL_MODE=verify-full&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_DATABASE_NAME=grafana&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_DATABASE_USER=administrador&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_DATABASE_HOST=mysql&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_DATABASE_PASSWORD=MaNF48Fc&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_ANALYTICS_REPORTING_ENABLED=false&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;GF_PATHS_PLUGINS=/plugins&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/data/grafana/plugins:/plugins</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">traefik.enable=true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">traefik.http.routers.grafana.rule=Host(`grafana.labs.pue.es`)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">traefik.http.routers.grafana.entrypoints=web</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">traefik.http.routers.grafana_s.rule=Host(`grafana.labs.pue.es`)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">traefik.http.routers.grafana_s.entrypoints=web-secure</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">traefik.http.routers.grafana_s.tls.certresolver=letsencrypt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">traefik.docker.network=traefik</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">traefik</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">grafana-db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">grafana-db</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">traefik</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><p>Este docker-compose, aparte de levantar los contenedores, abre el puerto 8086 desde la IP 10.91.240.155 como si fuera el puerto 8086 de la máquina host. Utilizaremos esa IP y puerto después cuando hagamos que telegraf envíe los datos hacia la base de datos en el server central.</p>
 <p>Para poder hacer que Traefik traduzca el nombre y nos proporcione HTTPS hay que añadir las siguientes líneas al docker-compose.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">labels</span>:
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Para decirle a traefik que exponga este container</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">traefik.enable=true</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Para decirle a traefik que a traves de que dominio va a acceptar                                                     conexiones http</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">traefik.http.routers.grafana.rule=Host(`grafana.labs.pue.es`)</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Para decirle a traefik el entrypoint por el que estas conexiones             tienen que entrar</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">traefik.http.routers.grafana.entrypoints=web</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Para decirle a traefik que a traves de que dominio va a acceptar                                                     conexiones https</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">traefik.http.routers.grafana_s.rule=Host(`grafana.labs.pue.es`)</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Para decirle a traefik el entrypoint por el que estas conexiones             tienen que entrar</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">traefik.http.routers.grafana_s.entrypoints=web-secure</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Le indica a traefik que certificado utilizar</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">traefik.http.routers.grafana_s.tls.certresolver=letsencrypt</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Le indica la red en la que se encuentra el container de traefik</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">traefik.docker.network=traefik</span>
-</span></span></code></pre></div><p>El archivo telegraf.conf que usaremos para enviar datos desde todos los servers a el server central es el siguiente:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#75715e"># Configuration for sending metrics to InfluxDB</span>
-</span></span><span style="display:flex;"><span>[[<span style="color:#ae81ff">outputs.influxdb]]</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">## The full HTTP or UDP URL for your InfluxDB instance.</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">##</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">## Multiple URLs can be specified for a single cluster, only ONE of the</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">## urls will be written to each interval.</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># urls = [&#34;unix:///var/run/influxdb.sock&#34;]</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># urls = [&#34;udp://127.0.0.1:8089&#34;]</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">urls = [&#34;http://10.91.240.155:8086&#34;]</span>
-</span></span></code></pre></div><p>Esta vez, en vez de ser localhost, usamos la IP que el container de InfluxDB ha abierto a la intranet de servers con el puerto 8086.</p>
-<h4 id="22-deploy">2.2 Deploy<a href="#22-deploy" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Para decirle a traefik que exponga este container</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">traefik.enable=true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Para decirle a traefik que a traves de que dominio va a acceptar                                                     conexiones http</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">traefik.http.routers.grafana.rule=Host(`grafana.labs.pue.es`)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Para decirle a traefik el entrypoint por el que estas conexiones             tienen que entrar</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">traefik.http.routers.grafana.entrypoints=web</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Para decirle a traefik que a traves de que dominio va a acceptar                                                     conexiones https</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">traefik.http.routers.grafana_s.rule=Host(`grafana.labs.pue.es`)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Para decirle a traefik el entrypoint por el que estas conexiones             tienen que entrar</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">traefik.http.routers.grafana_s.entrypoints=web-secure</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Le indica a traefik que certificado utilizar</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">traefik.http.routers.grafana_s.tls.certresolver=letsencrypt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Le indica la red en la que se encuentra el container de traefik</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">traefik.docker.network=traefik</span><span class="w">
+</span></span></span></code></pre></div><p>El archivo telegraf.conf que usaremos para enviar datos desde todos los servers a el server central es el siguiente:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># Configuration for sending metrics to InfluxDB</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[[</span><span class="l">outputs.influxdb]]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">## The full HTTP or UDP URL for your InfluxDB instance.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">##</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">## Multiple URLs can be specified for a single cluster, only ONE of the</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">## urls will be written to each interval.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># urls = [&#34;unix:///var/run/influxdb.sock&#34;]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># urls = [&#34;udp://127.0.0.1:8089&#34;]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">urls = [&#34;http://10.91.240.155:8086&#34;]</span><span class="w">
+</span></span></span></code></pre></div><p>Esta vez, en vez de ser localhost, usamos la IP que el container de InfluxDB ha abierto a la intranet de servers con el puerto 8086.</p>
+<h4 id="22-deploy">2.2 Deploy</h4>
 <p>Para instalar y configurar telegraf en cada server, utilicé el siguiente yml de ansible:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">setup servers pue</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">servers</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">vars</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">user</span>: <span style="color:#ae81ff">santiago</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">become</span>: <span style="color:#66d9ef">yes</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tasks</span>:
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Update repos, instalar herramientas previas </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apt</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">update_cache</span>: <span style="color:#66d9ef">yes</span> 
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">force_apt_get</span>: <span style="color:#66d9ef">yes</span> 
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">cache_valid_time</span>: <span style="color:#ae81ff">3600</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">when</span>: <span style="color:#ae81ff">(ansible_facts[&#39;os_family&#39;] == &#34;Debian&#34;)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">instalar herramientas previas </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apt</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">state</span>: <span style="color:#ae81ff">present</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">curl</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">gnupg</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">gnupg1</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">gnupg2 </span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">net-tools</span>
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">software-properties-common</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">when</span>: <span style="color:#ae81ff">(ansible_facts[&#39;os_family&#39;] == &#34;Debian&#34;)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Import InfluxDB GPG signing key</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apt_key</span>: 
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://repos.influxdata.com/influxdb.key </span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">state</span>: <span style="color:#ae81ff">present </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">when</span>: <span style="color:#ae81ff">(ansible_facts[&#39;os_family&#39;] == &#34;Debian&#34;)</span>
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Add InfluxDB repository</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apt_repository</span>: 
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">repo</span>: <span style="color:#e6db74">&#39;deb https://repos.influxdata.com/ubuntu trusty stable&#39;</span> 
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">state</span>: <span style="color:#ae81ff">present </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">when</span>: <span style="color:#ae81ff">(ansible_facts[&#39;os_family&#39;] == &#34;Debian&#34;)</span>
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Install telegraf</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apt</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">telegraf</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">state</span>: <span style="color:#ae81ff">latest</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">when</span>: <span style="color:#ae81ff">(ansible_facts[&#39;os_family&#39;] == &#34;Debian&#34;)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Add telegraf repository</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">yum_repository</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">influxdb</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">description</span>: <span style="color:#ae81ff">InfluxDB Repository - RHEL $releasever</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">baseurl</span>: <span style="color:#ae81ff">https://repos.influxdata.com/rhel/$releasever/$basearch/stable</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">gpgcheck</span>: <span style="color:#66d9ef">yes</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">gpgkey</span>: <span style="color:#ae81ff">https://repos.influxdata.com/influxdb.key</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">when</span>: <span style="color:#ae81ff">(ansible_facts[&#39;os_family&#39;] == &#34;RedHat&#34;)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Install telegraf REDHAT </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">yum</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">telegraf</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">state</span>: <span style="color:#ae81ff">latest</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">disablerepo</span>: <span style="color:#e6db74">&#34;*&#34;</span> 
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">enablerepo</span>: <span style="color:#ae81ff">influxdb</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">when</span>: <span style="color:#ae81ff">(ansible_facts[&#39;os_family&#39;] == &#34;RedHat&#34;)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Copy config</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">copy</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">src</span>: <span style="color:#ae81ff">./telegraf.conf</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">dest</span>: <span style="color:#ae81ff">/etc/telegraf/telegraf.conf</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">owner</span>: <span style="color:#ae81ff">root</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">group</span>: <span style="color:#ae81ff">root</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">mode</span>: <span style="color:#ae81ff">0644</span>
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">restart telegraf</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">service</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">telegraf</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">state</span>: <span style="color:#ae81ff">restarted</span>
-</span></span></code></pre></div><p>Este ansible sirve tanto para las distros de la familia Debian como para las distros de la familia RedHat. Lo que hace es añadir el repositorio de Influx, instalar Telegraf y copiar la configuración del mismo que está en local a la dirección /etc/telegraf/telegraf.conf y reinicia el servicio para que la nueva configuración esté en efecto.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">setup servers pue</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">servers</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">vars</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">santiago</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Update repos, instalar herramientas previas </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">apt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">update_cache</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">force_apt_get</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">cache_valid_time</span><span class="p">:</span><span class="w"> </span><span class="m">3600</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l">(ansible_facts[&#39;os_family&#39;] == &#34;Debian&#34;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">instalar herramientas previas </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">apt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">present</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">curl</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">gnupg</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">gnupg1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">gnupg2 </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">net-tools</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">software-properties-common</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l">(ansible_facts[&#39;os_family&#39;] == &#34;Debian&#34;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Import InfluxDB GPG signing key</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">apt_key</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://repos.influxdata.com/influxdb.key </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">present </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l">(ansible_facts[&#39;os_family&#39;] == &#34;Debian&#34;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Add InfluxDB repository</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">apt_repository</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;deb https://repos.influxdata.com/ubuntu trusty stable&#39;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">present </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l">(ansible_facts[&#39;os_family&#39;] == &#34;Debian&#34;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install telegraf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">apt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">telegraf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l">(ansible_facts[&#39;os_family&#39;] == &#34;Debian&#34;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Add telegraf repository</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">yum_repository</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">influxdb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">InfluxDB Repository - RHEL $releasever</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">baseurl</span><span class="p">:</span><span class="w"> </span><span class="l">https://repos.influxdata.com/rhel/$releasever/$basearch/stable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">gpgcheck</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">gpgkey</span><span class="p">:</span><span class="w"> </span><span class="l">https://repos.influxdata.com/influxdb.key</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l">(ansible_facts[&#39;os_family&#39;] == &#34;RedHat&#34;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install telegraf REDHAT </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">yum</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">telegraf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">disablerepo</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">enablerepo</span><span class="p">:</span><span class="w"> </span><span class="l">influxdb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l">(ansible_facts[&#39;os_family&#39;] == &#34;RedHat&#34;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Copy config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">copy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l">./telegraf.conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l">/etc/telegraf/telegraf.conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="m">0644</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">restart telegraf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">telegraf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">restarted</span><span class="w">
+</span></span></span></code></pre></div><p>Este ansible sirve tanto para las distros de la familia Debian como para las distros de la familia RedHat. Lo que hace es añadir el repositorio de Influx, instalar Telegraf y copiar la configuración del mismo que está en local a la dirección /etc/telegraf/telegraf.conf y reinicia el servicio para que la nueva configuración esté en efecto.</p>
 <p>Mientras hacia el deploy, encontré que los servidores CentOS 8 no pueden instalar ningún paquete porque los repositorios oficiales de CentOS han sido deprecados y han cambiado de URL.</p>
 <p>Para poder instalar-lo en estos servers modifiqué la siguiente parte.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Install telegraf REDHAT </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">yum</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">telegraf</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">state</span>: <span style="color:#ae81ff">latest</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">disablerepo</span>: <span style="color:#e6db74">&#34;*&#34;</span> 
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">enablerepo</span>: <span style="color:#ae81ff">influxdb</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">when</span>: <span style="color:#ae81ff">(ansible_facts[&#39;os_family&#39;] == &#34;RedHat&#34;)</span>
-</span></span></code></pre></div><p>Obligo a yum a buscar telegraf en el repositorio influx-db des-habilitando todos los repositorios y activando solo el repositorio influx-db.</p>
-<h4 id="23-dashboard">2.3 Dashboard<a href="#23-dashboard" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install telegraf REDHAT </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">yum</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">telegraf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">disablerepo</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;*&#34;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">enablerepo</span><span class="p">:</span><span class="w"> </span><span class="l">influxdb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l">(ansible_facts[&#39;os_family&#39;] == &#34;RedHat&#34;)</span><span class="w">
+</span></span></span></code></pre></div><p>Obligo a yum a buscar telegraf en el repositorio influx-db des-habilitando todos los repositorios y activando solo el repositorio influx-db.</p>
+<h4 id="23-dashboard">2.3 Dashboard</h4>
 <p>Para monitorizar mejor los servers, me dijeron que sería mejor que utilizaremos el dashboard estándar de Telegraf. Se puede importar con la id 928.</p>
-<h2 id="conclusiones">Conclusiones<a href="#conclusiones" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="conclusiones">Conclusiones</h2>
 <p>Grafana es una herramienta muy útil para</p>
-<h3 id="proyecto-hecho-por">Proyecto hecho por:<a href="#proyecto-hecho-por" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="proyecto-hecho-por">Proyecto hecho por:</h3>
 <p>Santiago Pastor Serrano el 22-07-2022 a las 11:28</p>
-<h3 id="tutor-de-prácticas">Tutor de prácticas<a href="#tutor-de-prácticas" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="tutor-de-prácticas">Tutor de prácticas</h3>
 <p>Ramón de la Rosa</p>
 
-      </div></div>
 
-  
+                                        
+                                        
+                                        
+                                        
+                                    </div>
 
-  
-  
+                                    
+                                    
+                                    
 
-  
-</div>
+                                    
+                                    <div class="post-meta">
+                                        
+                                        
+                                        <div class="post-tags">
+                                            <ul>
+                                            
+                                            <li>
+                                                <a href="/tags/grafana" title="View all posts tagged match">grafana</a>
+                                            </li>
+                                            
+                                            <li>
+                                                <a href="/tags/influxdb" title="View all posts tagged match">influxdb</a>
+                                            </li>
+                                            
+                                            <li>
+                                                <a href="/tags/telegraf" title="View all posts tagged match">telegraf</a>
+                                            </li>
+                                            
+                                            <li>
+                                                <a href="/tags/ansible" title="View all posts tagged match">ansible</a>
+                                            </li>
+                                            
+                                            <li>
+                                                <a href="/tags/deploy" title="View all posts tagged match">deploy</a>
+                                            </li>
+                                            
+                                            </ul>
+                                        </div>
+                                        
+                                        
+                                        <nav class="further-reading">
+                                            
+                                            <div class="previous">
+                                                <span>&lt;&lt; Prev</span>
+                                                <a href="https://santiagopastor.xyz/posts/hola/"
+                                                    rel="prev">Alto usted ahi!!</a> </div>
+                                            
+                                            
+                                            <div class="next">
+                                                <span>Next >></span>
+                                                <a href="https://santiagopastor.xyz/posts/kubernetes/">Kubernetes</a> 
+                                            </div>
+                                            
+                                        </nav>
+                                    </div>
+                                    
+                                    
 
-  </div>
+                                    
+                                    
+                                    <div style="width: 100%;height: 1px;border:1px solid #f8f8f8;margin: 50px 0 30px;"></div>
+                                    <script src="https://utteranc.es/client.js"
+                                            repo="{org}/{repo}"
+                                            issue-term="title"
+                                            theme="github-dark"
+                                            crossorigin="anonymous"
+                                            async>
+                                    </script>
+                                    
+                                    
 
-  
-    <footer class="footer">
-  <div class="footer__inner">
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <aside class="sidebar sidebar-primary" id="sidebar-primary" role="complementary">
+    <h1 class="screen-reader-text">Sidebar</h1>
     
-      <div class="copyright">
-        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
+
     
-        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
-      </div>
-  </div>
+    
+    <section id="text-2" class="widget widget_text">
+        <div class="textwidget">
+            
+            <div id="profile">
+                <div id="profile_picture"><img src="https://cdnb.artstation.com/p/assets/images/images/032/778/277/large/constantine-admech002.jpg?1607445059"></div>
+                <div id="profile_intro">
+                    <p><span class="name">Santiago Pastor Serrano</span></p>
+                    <p class="intro">Sysadmin</p>
+                </div>
+            </div>
+            
+            <p>
+                <script type="text/javascript">
+                    (function ($) {
+                        $(document).ready(function () {
+                            var menuPrimaryContainer = $('#menu-primary-container');
+                            var profile = $('#text-2');
+                            $('#toggle-navigation').click(function () {
+                                if (menuPrimaryContainer.hasClass('open')) {
+                                    profile.removeClass('open');
+                                } else {
+                                    profile.addClass('open');
+                                }
+                            });
+                        });
+                    })(jQuery);
+                </script>
+            </p>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+    <section id="tag_cloud-2" class="widget widget_tag_cloud">
+        <h2 class="widget-title">Tags</h2>
+        <div class="tagcloud">
+            
+            <a href="/tags/ansible/"
+                class="tag-cloud-link tag-link-58 tag-link-position-1"
+                style="font-size: 11.083333333333pt;" aria-label="Apache (6 items)">ansible</a>
+            
+            <a href="/tags/deploy/"
+                class="tag-cloud-link tag-link-58 tag-link-position-1"
+                style="font-size: 11.083333333333pt;" aria-label="Apache (6 items)">deploy</a>
+            
+            <a href="/tags/grafana/"
+                class="tag-cloud-link tag-link-58 tag-link-position-1"
+                style="font-size: 11.083333333333pt;" aria-label="Apache (6 items)">grafana</a>
+            
+            <a href="/tags/influxdb/"
+                class="tag-cloud-link tag-link-58 tag-link-position-1"
+                style="font-size: 11.083333333333pt;" aria-label="Apache (6 items)">influxdb</a>
+            
+            <a href="/tags/kubernetes/"
+                class="tag-cloud-link tag-link-58 tag-link-position-1"
+                style="font-size: 11.083333333333pt;" aria-label="Apache (6 items)">kubernetes</a>
+            
+            <a href="/tags/telegraf/"
+                class="tag-cloud-link tag-link-58 tag-link-position-1"
+                style="font-size: 11.083333333333pt;" aria-label="Apache (6 items)">telegraf</a>
+            
+            <a href="/tags/web-posts/"
+                class="tag-cloud-link tag-link-58 tag-link-position-1"
+                style="font-size: 11.083333333333pt;" aria-label="Apache (6 items)">Web posts</a>
+            
+        </div>
+    </section>
+    
+    
+
+    
+    
+    
+    
+</aside>
+            </div>
+        </div>
+
+        <footer id="site-footer" class="site-footer" role="contentinfo">
+    <div class="max-width">
+    </div>
+    <div class="footer">
+        <div id="footercontent">
+            <br/>
+            Built with Hugo Theme <a href="https://github.com/idoubi/hugo-theme-period" target="_blank">Period</a>
+        </div>
+    </div>
 </footer>
 
-<script src="http://santiagopastor.xyz/assets/main.js"></script>
-<script src="http://santiagopastor.xyz/assets/prism.js"></script>
-
-
-
-
-
-
-
-  
-</div>
-
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e8351b6d4626d5881d439ea1f6184baa";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+    
+    </div>
+    
 </body>
+
 </html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web posts on Knowlege Archive</title>
+    <link>https://santiagopastor.xyz/tags/web-posts/</link>
+    <description>Recent content in Web posts on Knowlege Archive</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 26 Jul 2022 20:16:53 +0200</lastBuildDate><atom:link href="https://santiagopastor.xyz/tags/web-posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alto usted ahi!!</title>
+      <link>https://santiagopastor.xyz/posts/hola/</link>
+      <pubDate>Tue, 26 Jul 2022 20:16:53 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/posts/hola/</guid>
+      <description>Hey, henlo!
+Soy Santiago Pastor Serrano, un Sysadmin y friky de Warhammer 40k. Aunque si estas leyendo seguramente ya me conoces.
+Pues, huh&amp;hellip; Esta pagina web sirve para tener mis apuntes y trabajos (y alguna que otra cosa chula que haga). Asi que mira y disfruta.
+Espero que os sea de probecho</description>
+    </item>
+    
+  </channel>
+</rss>

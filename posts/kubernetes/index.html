@@ -2,19 +2,24 @@
 
 <head>
     
-<title>Posts - Knowlege Archive</title>
+<title>Kubernetes - Knowlege Archive</title>
 
-<meta property="og:title" content="Posts - Knowlege Archive">
-
-
-
-    
+<meta property="og:title" content="Kubernetes - Knowlege Archive">
 
 
 
     
 
 
+
+    
+    <meta property="description" content="Mi entorno y conocimiento básico de Kubernetes">
+    <meta property="og:description" content="Mi entorno y conocimiento básico de Kubernetes">
+    
+
+
+
+<meta property="keywords" content ="kubernetes">
 
 
 
@@ -24,8 +29,6 @@
 
 <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAl2chF0OuqvNKaMXWlh9GPn5vlHpSl0pXgQ&amp;usqp=CAU" type="image/x-icon" />
 
-
-<link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Knowlege Archive" />
 
 
 <link rel="stylesheet" href="/css/style.min.css" />
@@ -53,12 +56,8 @@ hljs.highlightAll();
 
 
     <style>
-        .post-content li {
-            list-style: none;
-            margin: 10px auto;
-        }
-        .post-content li a {
-            text-decoration: none;
+        .post-content img {
+            max-width: 400px;
         }
     </style>
 </head>
@@ -105,35 +104,112 @@ hljs.highlightAll();
                                 <div class="post-container">
                                     <div class="post-header">
                                         <h2 class="post-title">
-                                            <a href="javascript:;">文章</a>
+                                            <a href="/posts/kubernetes/">Kubernetes</a>
                                         </h2>
+                                        
+                                        <div class="post-byline">Published on
+                                            <a class="date" href="javascript:;">2022/07/29</a>
+                                            
+                                            
+                                            
+                                            By 
+                                            <a class="author" href="javascript:;">Santiago Pastor Serrano</a></div>
+                                            
+                                        
                                     </div>
                                     <div class="post-content">
+                                        <h1 id="kubernetes">Kubernetes</h1>
+<p>This page contains my knowlage on the tool Kubernetes.</p>
+<h2 id="basic-knowlage">Basic knowlage</h2>
+<h3 id="what-is-kubernetes">What is Kubernetes?</h3>
+<p>Kubernetes is a container orchestration tool. (TLDR helps you manage a lot of containers in a centralized way)</p>
+<p>It is a very powerful tool. But, why do we need it. Because a lot of applications now use a lot of services. Thus they use a lot of containers and organizing 10 containers is a pain, but 200 is a suicide. So, Kubernetes lets you manage them in a centralized way so that the task of updating a high availability website isn&rsquo;t as pedantic as updating 40 containers manually. For this, Kubernetes (or more exactly kubectl) uses a yaml file as a template for how to manage the containers.</p>
+<p>Before knowing how does this all work, you should better understand the elements of a Kubernetes cluster.</p>
+<h3 id="components-of-a-kubernetes-cluster">Components of a Kubernetes cluster</h3>
+<h4 id="master-node">Master node</h4>
+<p>A master node is the server (or servers) designated with the task of telling the Worker nodes what to do. They also are the only access point to the cluster so, if you loose the access to one of these in a production environment, start screaming. XD Just joking, the majority of production environments have a couple of them just in case. The components of a Master node are the following:</p>
+<ul>
+<li>
+<p>API Server: The entry-point to the cluster. It talks to the different possible clients. (Such as an UI, API or CLI).</p>
+</li>
+<li>
+<p>Controller manager: keeps track of what is happening in the cluster.( a node that needs a restart, a container that has shot down, those kinds of things)</p>
+</li>
+<li>
+<p>Scheduler: Designates where the pods and containers are going to be created based on workload and available resources.</p>
+</li>
+<li>
+<p>Etcd: Where Kubernetes stores the backups of the different states of the cluster. (Config and status data of every node)</p>
+</li>
+</ul>
+<h4 id="worker-node">Worker Node</h4>
+<p>The worker nodes are the ones that actually do all the work (as the name implies). They can be real or virtual and contain/use:</p>
+<ul>
+<li>Kublet: Is a containerized process that allows the nodes to speak to each other and exchange information.(Also called &ldquo;node agent&rdquo;)</li>
+</ul>
+<p>Its main goal is to store and use pods (Explained later).</p>
+<h4 id="virtual-network">Virtual network</h4>
+<p>Allows the different nodes to talk to each other. (In simple terms, makes the entire cluster into a super machine that has all the resources of all the nodes)</p>
+<h4 id="pods">Pods</h4>
+<p>The smallest object that you can admin with Kubernetes. Most of the time, there will only be 1 container inside each pod, but some applications that need more than one service can have multiple containers inside each one (such as WordPress because it needs a database and a Web server). There can be multiple pods inside each worker node.</p>
+<h3 id="setting-up-a-basic-testing-enviroment-for-learning">Setting up a basic testing enviroment for learning</h3>
+<h4 id="applications-that-i-used">Applications that I used</h4>
+<p>virtualbox and vagrant</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo yay -S virtualbox vagrant
+</span></span></code></pre></div><h4 id="how-to-get-it-up-and-running">How to get it up and running</h4>
+
+
                                         
-                                            <h3>2022</h3>
-                                                <ul class="archive-list">
-                                                
-                                                    <li>
-                                                    07/29
-                                                    &nbsp;&nbsp;&nbsp;
-                                                    <a href="/posts/kubernetes/">Kubernetes</a>
-                                                    </li>
-                                                
-                                                    <li>
-                                                    07/26
-                                                    &nbsp;&nbsp;&nbsp;
-                                                    <a href="/posts/grafana/">Grafana</a>
-                                                    </li>
-                                                
-                                                    <li>
-                                                    07/26
-                                                    &nbsp;&nbsp;&nbsp;
-                                                    <a href="/posts/hola/">Alto usted ahi!!</a>
-                                                    </li>
-                                                
-                                            </ul>
+                                        
+                                        
                                         
                                     </div>
+
+                                    
+                                    
+                                    
+
+                                    
+                                    <div class="post-meta">
+                                        
+                                        
+                                        <div class="post-tags">
+                                            <ul>
+                                            
+                                            <li>
+                                                <a href="/tags/kubernetes" title="View all posts tagged match">kubernetes</a>
+                                            </li>
+                                            
+                                            </ul>
+                                        </div>
+                                        
+                                        
+                                        <nav class="further-reading">
+                                            
+                                            <div class="previous">
+                                                <span>&lt;&lt; Prev</span>
+                                                <a href="https://santiagopastor.xyz/posts/grafana/"
+                                                    rel="prev">Grafana</a> </div>
+                                            
+                                            
+                                        </nav>
+                                    </div>
+                                    
+                                    
+
+                                    
+                                    
+                                    <div style="width: 100%;height: 1px;border:1px solid #f8f8f8;margin: 50px 0 30px;"></div>
+                                    <script src="https://utteranc.es/client.js"
+                                            repo="{org}/{repo}"
+                                            issue-term="title"
+                                            theme="github-dark"
+                                            crossorigin="anonymous"
+                                            async>
+                                    </script>
+                                    
+                                    
+
                                 </div>
                             </article>
                         </div>

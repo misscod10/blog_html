@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>deploy on Knowlege Archive</title>
+    <link>https://santiagopastor.xyz/tags/deploy/</link>
+    <description>Recent content in deploy on Knowlege Archive</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 26 Jul 2022 20:17:02 +0200</lastBuildDate><atom:link href="https://santiagopastor.xyz/tags/deploy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Grafana</title>
+      <link>https://santiagopastor.xyz/posts/grafana/</link>
+      <pubDate>Tue, 26 Jul 2022 20:17:02 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/posts/grafana/</guid>
+      <description>Proyecto Grafana Introducción En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.
+Programas y herramientas necesarias Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.
+Telegraf Se encarga de recolectar la información que le especificamos en la configuración (Ej.: CPU/RAM/LOAD) y los envía al output configurado (Ej.</description>
+    </item>
+    
+  </channel>
+</rss>

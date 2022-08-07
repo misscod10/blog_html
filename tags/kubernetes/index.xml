@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kubernetes on Knowlege Archive</title>
+    <link>https://santiagopastor.xyz/tags/kubernetes/</link>
+    <description>Recent content in kubernetes on Knowlege Archive</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 29 Jul 2022 20:56:08 +0200</lastBuildDate><atom:link href="https://santiagopastor.xyz/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes</title>
+      <link>https://santiagopastor.xyz/posts/kubernetes/</link>
+      <pubDate>Fri, 29 Jul 2022 20:56:08 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/posts/kubernetes/</guid>
+      <description>Kubernetes This page contains my knowlage on the tool Kubernetes.
+Basic knowlage What is Kubernetes? Kubernetes is a container orchestration tool. (TLDR helps you manage a lot of containers in a centralized way)
+It is a very powerful tool. But, why do we need it. Because a lot of applications now use a lot of services. Thus they use a lot of containers and organizing 10 containers is a pain, but 200 is a suicide.</description>
+    </item>
+    
+  </channel>
+</rss>

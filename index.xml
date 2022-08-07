@@ -1,363 +1,43 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Index on santiagopastor.xyz</title>
-    <link>http://santiagopastor.xyz/</link>
-    <description>Recent content in Index on santiagopastor.xyz</description>
+    <title>Index on Knowlege Archive</title>
+    <link>https://santiagopastor.xyz/</link>
+    <description>Recent content in Index on Knowlege Archive</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>es-eu</language>
-    <lastBuildDate>Tue, 26 Jul 2022 21:45:26 +0200</lastBuildDate><atom:link href="http://santiagopastor.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Jul 2022 21:45:26 +0200</lastBuildDate><atom:link href="https://santiagopastor.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes</title>
+      <link>https://santiagopastor.xyz/posts/kubernetes/</link>
+      <pubDate>Fri, 29 Jul 2022 20:56:08 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/posts/kubernetes/</guid>
+      <description>Kubernetes This page contains my knowlage on the tool Kubernetes.
+Basic knowlage What is Kubernetes? Kubernetes is a container orchestration tool. (TLDR helps you manage a lot of containers in a centralized way)
+It is a very powerful tool. But, why do we need it. Because a lot of applications now use a lot of services. Thus they use a lot of containers and organizing 10 containers is a pain, but 200 is a suicide.</description>
+    </item>
+    
     <item>
       <title>Grafana</title>
-      <link>http://santiagopastor.xyz/posts/grafana/</link>
+      <link>https://santiagopastor.xyz/posts/grafana/</link>
       <pubDate>Tue, 26 Jul 2022 20:17:02 +0200</pubDate>
       
-      <guid>http://santiagopastor.xyz/posts/grafana/</guid>
+      <guid>https://santiagopastor.xyz/posts/grafana/</guid>
       <description>Proyecto Grafana Introducción En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.
 Programas y herramientas necesarias Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.
 Telegraf Se encarga de recolectar la información que le especificamos en la configuración (Ej.: CPU/RAM/LOAD) y los envía al output configurado (Ej.</description>
-      <content>&lt;h1 id=&#34;proyecto-grafana&#34;&gt;Proyecto Grafana&lt;/h1&gt;
-&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;
-&lt;p&gt;En este proyecto haré las configuraciones necesarias para monitorizar la utilización de recursos de un grupo de servidores desde una interfaz web.&lt;/p&gt;
-&lt;h3 id=&#34;programas-y-herramientas-necesarias&#34;&gt;Programas y herramientas necesarias&lt;/h3&gt;
-&lt;p&gt;Para cumplir este objetivo, utilizaré Telegraf como recolector de datos, InfluxDB como base de datos donde guardarlos y Grafana como interficie web para representarlos.&lt;/p&gt;
-&lt;h4 id=&#34;telegraf&#34;&gt;Telegraf&lt;/h4&gt;
-&lt;p&gt;Se encarga de recolectar la información que le especificamos en la configuración (Ej.: CPU/RAM/LOAD) y los envía al output configurado (Ej.: una base de datos).&lt;/p&gt;
-&lt;h4 id=&#34;influxdb&#34;&gt;InfluxDB&lt;/h4&gt;
-&lt;p&gt;Es una base de datos en tiempo real escrita en Go. Es a donde Telegraf va a mandar la información.&lt;/p&gt;
-&lt;h4 id=&#34;grafana&#34;&gt;Grafana&lt;/h4&gt;
-&lt;p&gt;Es el Dashboard que se encarga de representar toda la información que InfluxDB tiene almacenado. Accederemos a este servicio desde la dirección localhost:3000.&lt;/p&gt;
-&lt;h4 id=&#34;traefik&#34;&gt;Traefik&lt;/h4&gt;
-&lt;p&gt;Es la proxy inversa que vamos a utilizar para implementar el protocolo HTTPS cuando accedamos al dashboard web del Grafana y para hacer la traducción del nombre grafana.labs.pue.es a la IP y puerto del servicio (puerto 3000).&lt;/p&gt;
-&lt;h4 id=&#34;mysql-no-obligatorio&#34;&gt;MySQL (no obligatorio)&lt;/h4&gt;
-&lt;p&gt;Grafana viene de base con una base de datos SQLite que emplea para guardar sus usuarios, contraseñas, datasources etc. En la gran mayoría de casos esto sería suficiente, pero, me he puesto como desafío utilizar una MySQL en vez de la SQLite.&lt;/p&gt;
-&lt;h3 id=&#34;esquema-final&#34;&gt;Esquema Final&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;http://santiagopastor.xyz/Diagrama1.png&#34; alt=&#34;Diagrama de Grafana&#34; title=&#34;Diagrama de grafana&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Telegraf recogerá los datos de cada màquina y los enviará a la base de datos InfluxDB que está en el server central. Una vez los datos están en la base de datos, Grafana enviarà una request cada 10s para saber los datos que tengamos configurados en el dashboard y representarlos.&lt;/p&gt;
-&lt;h3 id=&#34;pasos-seguidos&#34;&gt;Pasos seguidos&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;☒ Instalar una instancia básica en una máquina virtual&lt;/li&gt;
-&lt;li&gt;☒ Crea interfaz para entender como funcionan las queries de Influx&lt;/li&gt;
-&lt;li&gt;☒ Explicar que representa la interfaz&lt;/li&gt;
-&lt;li&gt;☒ Instalar en múltiples hosts con un solo dB
-&lt;ul&gt;
-&lt;li&gt;☒ Hacer Docker-compose para el server central con InfluxDB Grafana Y MySQL
-&lt;ul&gt;
-&lt;li&gt;☒ Escribir-lo&lt;/li&gt;
-&lt;li&gt;☒ Probarlo&lt;/li&gt;
-&lt;li&gt;☒ Solucionar el error con el container del grafana&lt;/li&gt;
-&lt;li&gt;☒ Probarlo en el server central
-&lt;ul&gt;
-&lt;li&gt;☒ Solucionar error al acceder desde un buscador web al grafana en el server central&lt;/li&gt;
-&lt;li&gt;☒ Hacer que se pueda acceder a grafana desde https con traefik&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;☒ Haz que InfluxDB escuche por un puerto a otros servers&lt;/li&gt;
-&lt;li&gt;☒ Instalar telegraf fuera de los containers&lt;/li&gt;
-&lt;li&gt;☒ Instalar telegraf en los otros servers con ansible
-&lt;ul&gt;
-&lt;li&gt;☒ Escribe el archivo para que funcione con servers Ubuntu y red hat&lt;/li&gt;
-&lt;li&gt;☒ Prueba-lo en maquinas virtuales&lt;/li&gt;
-&lt;li&gt;☒ Hacer conectividad entre los servers&lt;/li&gt;
-&lt;li&gt;☒ Deploy&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;☒ Crear las dashboards y confirmar que se recibe la información&lt;/li&gt;
-&lt;li&gt;☒ Documentar como lo he hecho, desde el compose hasta el telegraf.conf y el ansible deploy.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;☒ Documentar el proceso&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;documentación-del-proceso&#34;&gt;Documentación del proceso&lt;/h2&gt;
-&lt;h3 id=&#34;1-hacer-una-instalación-de-prueba-en-una-máquina-virtual-ubuntu-server&#34;&gt;1. Hacer una instalación de prueba en una máquina virtual Ubuntu Server.&lt;/h3&gt;
-&lt;h4 id=&#34;11-preparaciones-pre-instalación&#34;&gt;1.1 Preparaciones pre-instalación&lt;/h4&gt;
-&lt;p&gt;Antes de instalar nada, hacemos un &amp;ldquo;update&amp;rdquo; para tener los últimos repositorios y ejecutamos la orden siguiente para instalar los programas que necesitaremos para la instalación:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install curl gnupg gnupg1 gnupg2 net-tools software-properties-common
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Estas herramientas suelen venir instaladas en la gran mayoría de distribuciones, pero no las encontraremos en una instalación de Ubuntu server mínima, así que viene bien ejecutarlo para asegurarse de que están, ya que son las herramientas que nos permitirán añadir repositorios extras.&lt;/p&gt;
-&lt;h3 id=&#34;12-instalamos-el-software&#34;&gt;1.2 Instalamos el software&lt;/h3&gt;
-&lt;p&gt;Añadimos el repositorio de Influx para poder instalar Telegraf y InfluxDB:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source /etc/lsb-release
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;deb https://repos.influxdata.com/&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;DISTRIB_ID,,&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;DISTRIB_CODENAME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; stable&amp;#34;&lt;/span&gt; | sudo tee /etc/apt/sources.list.d/influxdb.list
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Después actualizamos el listado de paquetes de los repositorios y instalamos InfluxDB:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install influxdb
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Iniciamos el servicio y lo activamos para que cada vez que se encienda la máquina, se encienda el servicio:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl start influxdb
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl enable influxdb
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Para terminar de configurar Influx entramos en su terminal, creamos una base de datos y un usuario para la misma:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-influx&#34; data-lang=&#34;influx&#34;&gt;influx
-create database telegraf
-create user user_que_quieras with password &amp;#39;la_contra_que_quieras&amp;#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Después instalamos telegraf y activamos su servicio:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install telegraf
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl start telegraf
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl enable telegraf
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Más tarde entramos en el archivo /etc/telegraf/telegraf.conf y vamos a la sección &lt;code&gt;[[outputs.influxdb]]&lt;/code&gt; y des-comentamos la línea que contiene lo siguiente:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;urls = [&amp;#34;http://localhost:8086&amp;#34;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;En esa línea se especifica la URL a la que Telegraf enviara sus datos y al puerto al que lo hará. En este caso, es localhost porque es una instalación que solo se comunicara consigo misma.&lt;/p&gt;
-&lt;p&gt;Después añadimos el repositorio de grafana:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo add-apt-repository &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;deb https://packages.grafana.com/oss/deb stable main&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Actualizamos los repositorios e instalamos grafana:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get update -y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get install grafana -y
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Y por último activamos e iniciamos el servicio grafana-server:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;systemctl start grafana-server
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;systemctl enable grafana-server
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;13-configuración-de-grafana&#34;&gt;1.3 Configuración de Grafana&lt;/h4&gt;
-&lt;p&gt;Para entrar a la UI de grafana, accedemos desde el buscador a la URL lohalhost:3000:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://santiagopastor.xyz/Pasted_image_20220627124826.png&#34; alt=&#34;Pastedimage20220627124826.png&#34; title=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;El login por default es admin:admin, pero una vez entras te obliga a cambiar de contraseña.&lt;/p&gt;
-&lt;p&gt;Una vez inicias sesión ves lo siguiente:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://santiagopastor.xyz/Pasted_image_20220627125135.png?1658297391991&#34; alt=&#34;Pastedimage20220627125135.png&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Es la pantalla de recibimiento. Hay varios tutoriales sobre como hacer cosas básicas, noticias de las actualizaciones, etc.&lt;/p&gt;
-&lt;p&gt;En la sección de dashboards es donde crearemos nuestros paneles de monitorización, para crear uno nuevo le clicas a new dashboard.&lt;/p&gt;
-&lt;p&gt;Cada panel es una tabla que representa un query que se le hace a la base de datos. Depende de lo que quieras extraer tenderas que cambiar la query. Hay dos maneras de formular la misma.&lt;/p&gt;
-&lt;p&gt;Con una plantilla:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://santiagopastor.xyz/Pasted_image_20220627125704.png?1658297391991&#34; alt=&#34;Pastedimage20220627125704.png&#34;&gt;&lt;/p&gt;
-&lt;p&gt;O con una orden entera directamente:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://santiagopastor.xyz/Pasted_image_20220627125946.png?1658297391991&#34; alt=&#34;Pastedimage20220627125946.png&#34;&gt;&lt;/p&gt;
-&lt;p&gt;También se pueden importar dashboards enteros desde dashboard&amp;gt;import utilizando el ID del dashboard que se quiere importar, su URL o subiendo un archivo .json:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://santiagopastor.xyz/Pasted_image_20220627130210.png?1658297391991&#34; alt=&#34;Pastedimage20220627130210.png&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;14-mi-interfaz-personalizada&#34;&gt;1.4 Mi interfaz personalizada&lt;/h4&gt;
-&lt;p&gt;De momento, he hecho que Grafana exponga:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Tiempo que lleva la máquina encendida&lt;/li&gt;
-&lt;li&gt;Espacio del disco que esta siendo utilizado&lt;/li&gt;
-&lt;li&gt;Procesos actuales activos&lt;/li&gt;
-&lt;li&gt;Procesos &amp;ldquo;zombies&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;Uso Total de la CPU&lt;/li&gt;
-&lt;li&gt;Uso Total de la RAM&lt;/li&gt;
-&lt;li&gt;Uso Total de la SWAP&lt;/li&gt;
-&lt;li&gt;Carga del sistema promedio&lt;/li&gt;
-&lt;li&gt;Uso de la CPU total en una timeline&lt;/li&gt;
-&lt;li&gt;Uso de la ram total en una timeline&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Foto del resultado:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://santiagopastor.xyz/Pasted_image_20220628131116.png?1658297391991&#34; alt=&#34;Pastedimage20220628131116.png&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;2-instalación-en-los-servidores-reales&#34;&gt;2 Instalación en los servidores reales&lt;/h3&gt;
-&lt;h4 id=&#34;21-instalar-en-el-server-central-influxdb-y-grafana-con-mysql-con-containers-y-telegraf-como-servicio&#34;&gt;2.1 Instalar en el server central InfluxDB y Grafana con MySQL con containers y Telegraf como servicio&lt;/h4&gt;
-&lt;p&gt;Creamos los contenedores de Grafana, InfluxDB y MySQL con el siguiente compose:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;version&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;services&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;mysql&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;mysql&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;container_name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;mysql&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;environment&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MYSQL_ROOT_PASSWORD=MaNF48Fc&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MYSQL_DATABASE=grafana&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MYSQL_USER=administrador&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MYSQL_PASSWORD=MaNF48Fc&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;/data/mysql/grafana:/var/lib/mysql&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;restart&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;unless-stopped&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;networks&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;grafana-db &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;influx&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;influxdb:1.8.4-alpine&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;container_name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;influxdb&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;ports&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;10.91.240.155:8086:8086&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;environment&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;INFLUXDB_REPORTING_DISABLED=true&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;INFLUXDB_DB=influx&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;INFLUXDB_ADMIN_USER=administrador&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;INFLUXDB_ADMIN_PASSWORD=MaNF48Fc&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;INFLUXDB_WRITE_USER=&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;INFLUXDB_WRITE_USER_PASSWORD=&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;INFLUXDB_DATA_QUERY_LOG_ENABLED=false&amp;#34;&lt;/span&gt;    
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;/data/influxdb/data:/var/lib/influxdb&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;restart&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;unless-stopped&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;networks&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;grafana-db &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;grafana&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;grafana/grafana&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;container_name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;grafana&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;depends_on&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;mysql&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;environment&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_SERVER_DOMAIN=&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_SERVER_ROOT_URL&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_SECURITY_ADMIN_PASSWORD=&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_DATABASE_TYPE=mysql&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_DATABASE_SSL_MODE=verify-full&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_DATABASE_NAME=grafana&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_DATABASE_USER=administrador&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_DATABASE_HOST=mysql&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_DATABASE_PASSWORD=MaNF48Fc&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_ANALYTICS_REPORTING_ENABLED=false&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GF_PATHS_PLUGINS=/plugins&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;/data/grafana/plugins:/plugins&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;labels&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.enable=true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana.rule=Host(`grafana.labs.pue.es`)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana.entrypoints=web&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana_s.rule=Host(`grafana.labs.pue.es`)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana_s.entrypoints=web-secure&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana_s.tls.certresolver=letsencrypt&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.docker.network=traefik&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;restart&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;unless-stopped&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;networks&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;grafana-db&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;networks&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;grafana-db&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;traefik&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;external&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Este docker-compose, aparte de levantar los contenedores, abre el puerto 8086 desde la IP 10.91.240.155 como si fuera el puerto 8086 de la máquina host. Utilizaremos esa IP y puerto después cuando hagamos que telegraf envíe los datos hacia la base de datos en el server central.&lt;/p&gt;
-&lt;p&gt;Para poder hacer que Traefik traduzca el nombre y nos proporcione HTTPS hay que añadir las siguientes líneas al docker-compose.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;labels&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Para decirle a traefik que exponga este container&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.enable=true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Para decirle a traefik que a traves de que dominio va a acceptar                                                     conexiones http&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana.rule=Host(`grafana.labs.pue.es`)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Para decirle a traefik el entrypoint por el que estas conexiones             tienen que entrar&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana.entrypoints=web&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Para decirle a traefik que a traves de que dominio va a acceptar                                                     conexiones https&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana_s.rule=Host(`grafana.labs.pue.es`)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Para decirle a traefik el entrypoint por el que estas conexiones             tienen que entrar&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana_s.entrypoints=web-secure&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Le indica a traefik que certificado utilizar&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.http.routers.grafana_s.tls.certresolver=letsencrypt&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Le indica la red en la que se encuentra el container de traefik&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;traefik.docker.network=traefik&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;El archivo telegraf.conf que usaremos para enviar datos desde todos los servers a el server central es el siguiente:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Configuration for sending metrics to InfluxDB&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#ae81ff&#34;&gt;outputs.influxdb]]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;## The full HTTP or UDP URL for your InfluxDB instance.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;##&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;## Multiple URLs can be specified for a single cluster, only ONE of the&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;## urls will be written to each interval.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# urls = [&amp;#34;unix:///var/run/influxdb.sock&amp;#34;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# urls = [&amp;#34;udp://127.0.0.1:8089&amp;#34;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ae81ff&#34;&gt;urls = [&amp;#34;http://10.91.240.155:8086&amp;#34;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Esta vez, en vez de ser localhost, usamos la IP que el container de InfluxDB ha abierto a la intranet de servers con el puerto 8086.&lt;/p&gt;
-&lt;h4 id=&#34;22-deploy&#34;&gt;2.2 Deploy&lt;/h4&gt;
-&lt;p&gt;Para instalar y configurar telegraf en cada server, utilicé el siguiente yml de ansible:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;setup servers pue&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;hosts&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;servers&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;vars&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;user&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;santiago&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;become&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;yes&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;tasks&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Update repos, instalar herramientas previas &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;apt&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;update_cache&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;yes&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;force_apt_get&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;yes&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;cache_valid_time&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;3600&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;when&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;(ansible_facts[&amp;#39;os_family&amp;#39;] == &amp;#34;Debian&amp;#34;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;instalar herramientas previas &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;apt&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;state&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;present&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;curl&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;gnupg&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;gnupg1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;gnupg2 &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;net-tools&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;software-properties-common&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;when&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;(ansible_facts[&amp;#39;os_family&amp;#39;] == &amp;#34;Debian&amp;#34;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Import InfluxDB GPG signing key&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;apt_key&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;url&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;https://repos.influxdata.com/influxdb.key &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;state&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;present &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;when&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;(ansible_facts[&amp;#39;os_family&amp;#39;] == &amp;#34;Debian&amp;#34;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Add InfluxDB repository&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;apt_repository&lt;/span&gt;: 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;repo&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;deb https://repos.influxdata.com/ubuntu trusty stable&amp;#39;&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;state&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;present &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;when&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;(ansible_facts[&amp;#39;os_family&amp;#39;] == &amp;#34;Debian&amp;#34;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Install telegraf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;apt&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;telegraf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;state&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;latest&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;when&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;(ansible_facts[&amp;#39;os_family&amp;#39;] == &amp;#34;Debian&amp;#34;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Add telegraf repository&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;yum_repository&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;influxdb&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;description&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;InfluxDB Repository - RHEL $releasever&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;baseurl&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;https://repos.influxdata.com/rhel/$releasever/$basearch/stable&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;gpgcheck&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;yes&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;gpgkey&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;https://repos.influxdata.com/influxdb.key&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;when&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;(ansible_facts[&amp;#39;os_family&amp;#39;] == &amp;#34;RedHat&amp;#34;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Install telegraf REDHAT &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;yum&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;telegraf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;state&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;latest&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;disablerepo&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;enablerepo&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;influxdb&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;when&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;(ansible_facts[&amp;#39;os_family&amp;#39;] == &amp;#34;RedHat&amp;#34;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Copy config&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;copy&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;src&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;./telegraf.conf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;dest&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;/etc/telegraf/telegraf.conf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;owner&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;root&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;group&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;root&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;mode&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;0644&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;restart telegraf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;service&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;telegraf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;state&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;restarted&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Este ansible sirve tanto para las distros de la familia Debian como para las distros de la familia RedHat. Lo que hace es añadir el repositorio de Influx, instalar Telegraf y copiar la configuración del mismo que está en local a la dirección /etc/telegraf/telegraf.conf y reinicia el servicio para que la nueva configuración esté en efecto.&lt;/p&gt;
-&lt;p&gt;Mientras hacia el deploy, encontré que los servidores CentOS 8 no pueden instalar ningún paquete porque los repositorios oficiales de CentOS han sido deprecados y han cambiado de URL.&lt;/p&gt;
-&lt;p&gt;Para poder instalar-lo en estos servers modifiqué la siguiente parte.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Install telegraf REDHAT &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;yum&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;telegraf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;state&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;latest&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;disablerepo&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;enablerepo&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;influxdb&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;when&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;(ansible_facts[&amp;#39;os_family&amp;#39;] == &amp;#34;RedHat&amp;#34;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Obligo a yum a buscar telegraf en el repositorio influx-db des-habilitando todos los repositorios y activando solo el repositorio influx-db.&lt;/p&gt;
-&lt;h4 id=&#34;23-dashboard&#34;&gt;2.3 Dashboard&lt;/h4&gt;
-&lt;p&gt;Para monitorizar mejor los servers, me dijeron que sería mejor que utilizaremos el dashboard estándar de Telegraf. Se puede importar con la id 928.&lt;/p&gt;
-&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones&lt;/h2&gt;
-&lt;p&gt;Grafana es una herramienta muy útil para&lt;/p&gt;
-&lt;h3 id=&#34;proyecto-hecho-por&#34;&gt;Proyecto hecho por:&lt;/h3&gt;
-&lt;p&gt;Santiago Pastor Serrano el 22-07-2022 a las 11:28&lt;/p&gt;
-&lt;h3 id=&#34;tutor-de-prácticas&#34;&gt;Tutor de prácticas&lt;/h3&gt;
-&lt;p&gt;Ramón de la Rosa&lt;/p&gt;
-</content>
     </item>
     
     <item>
       <title>Alto usted ahi!!</title>
-      <link>http://santiagopastor.xyz/posts/hola/</link>
+      <link>https://santiagopastor.xyz/posts/hola/</link>
       <pubDate>Tue, 26 Jul 2022 20:16:53 +0200</pubDate>
       
-      <guid>http://santiagopastor.xyz/posts/hola/</guid>
+      <guid>https://santiagopastor.xyz/posts/hola/</guid>
       <description>Hey, henlo!
 Soy Santiago Pastor Serrano, un Sysadmin y friky de Warhammer 40k. Aunque si estas leyendo seguramente ya me conoces.
 Pues, huh&amp;hellip; Esta pagina web sirve para tener mis apuntes y trabajos (y alguna que otra cosa chula que haga). Asi que mira y disfruta.
 Espero que os sea de probecho</description>
-      <content>&lt;p&gt;Hey, henlo!&lt;/p&gt;
-&lt;p&gt;Soy Santiago Pastor Serrano, un Sysadmin y friky de Warhammer 40k. Aunque si estas leyendo seguramente ya me conoces.&lt;/p&gt;
-&lt;p&gt;Pues, huh&amp;hellip; Esta pagina web sirve para tener mis apuntes y trabajos (y alguna que otra cosa chula que haga). Asi que mira y disfruta.&lt;/p&gt;
-&lt;p&gt;Espero que os sea de probecho&lt;/p&gt;
-</content>
     </item>
     
   </channel>

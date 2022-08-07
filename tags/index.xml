@@ -1,10 +1,73 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on santiagopastor.xyz</title>
-    <link>http://santiagopastor.xyz/tags/</link>
-    <description>Recent content in Tags on santiagopastor.xyz</description>
+    <title>Tags on Knowlege Archive</title>
+    <link>https://santiagopastor.xyz/tags/</link>
+    <description>Recent content in Tags on Knowlege Archive</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>es-eu</language><atom:link href="http://santiagopastor.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Jul 2022 20:56:08 +0200</lastBuildDate><atom:link href="https://santiagopastor.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kubernetes</title>
+      <link>https://santiagopastor.xyz/tags/kubernetes/</link>
+      <pubDate>Fri, 29 Jul 2022 20:56:08 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ansible</title>
+      <link>https://santiagopastor.xyz/tags/ansible/</link>
+      <pubDate>Tue, 26 Jul 2022 20:17:02 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/tags/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>deploy</title>
+      <link>https://santiagopastor.xyz/tags/deploy/</link>
+      <pubDate>Tue, 26 Jul 2022 20:17:02 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/tags/deploy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grafana</title>
+      <link>https://santiagopastor.xyz/tags/grafana/</link>
+      <pubDate>Tue, 26 Jul 2022 20:17:02 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/tags/grafana/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>influxdb</title>
+      <link>https://santiagopastor.xyz/tags/influxdb/</link>
+      <pubDate>Tue, 26 Jul 2022 20:17:02 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/tags/influxdb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>telegraf</title>
+      <link>https://santiagopastor.xyz/tags/telegraf/</link>
+      <pubDate>Tue, 26 Jul 2022 20:17:02 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/tags/telegraf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web posts</title>
+      <link>https://santiagopastor.xyz/tags/web-posts/</link>
+      <pubDate>Tue, 26 Jul 2022 20:16:53 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/tags/web-posts/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
