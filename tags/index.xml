@@ -5,7 +5,34 @@
     <link>https://santiagopastor.xyz/tags/</link>
     <description>Recent content in Tags on Knowlege Archive</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 29 Jul 2022 20:56:08 +0200</lastBuildDate><atom:link href="https://santiagopastor.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Aug 2022 16:44:21 +0200</lastBuildDate><atom:link href="https://santiagopastor.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Github</title>
+      <link>https://santiagopastor.xyz/tags/github/</link>
+      <pubDate>Sun, 07 Aug 2022 16:44:21 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://santiagopastor.xyz/tags/hugo/</link>
+      <pubDate>Sun, 07 Aug 2022 16:44:21 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://santiagopastor.xyz/tags/markdown/</link>
+      <pubDate>Sun, 07 Aug 2022 16:44:21 +0200</pubDate>
+      
+      <guid>https://santiagopastor.xyz/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>kubernetes</title>
       <link>https://santiagopastor.xyz/tags/kubernetes/</link>
