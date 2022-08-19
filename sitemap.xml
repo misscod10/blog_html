@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://santiagopastor.xyz/about/</loc>
+    <lastmod>2022-08-19T12:10:33+02:00</lastmod>
+  </url><url>
+    <loc>https://santiagopastor.xyz/tags/</loc>
+    <lastmod>2022-08-19T12:10:33+02:00</lastmod>
+  </url><url>
+    <loc>https://santiagopastor.xyz/tags/web-posts/</loc>
+    <lastmod>2022-08-19T12:10:33+02:00</lastmod>
+  </url><url>
     <loc>https://santiagopastor.xyz/posts/como_tener_una_web_gratis/</loc>
     <lastmod>2022-08-07T16:44:21+02:00</lastmod>
   </url><url>
@@ -15,9 +24,6 @@
     <lastmod>2022-08-07T16:44:21+02:00</lastmod>
   </url><url>
     <loc>https://santiagopastor.xyz/posts/</loc>
-    <lastmod>2022-08-07T16:44:21+02:00</lastmod>
-  </url><url>
-    <loc>https://santiagopastor.xyz/tags/</loc>
     <lastmod>2022-08-07T16:44:21+02:00</lastmod>
   </url><url>
     <loc>https://santiagopastor.xyz/tags/kubernetes/</loc>
@@ -48,9 +54,6 @@
     <lastmod>2022-07-26T20:17:02+02:00</lastmod>
   </url><url>
     <loc>https://santiagopastor.xyz/posts/hola/</loc>
-    <lastmod>2022-07-26T20:16:53+02:00</lastmod>
-  </url><url>
-    <loc>https://santiagopastor.xyz/tags/web-posts/</loc>
     <lastmod>2022-07-26T20:16:53+02:00</lastmod>
   </url><url>
     <loc>https://santiagopastor.xyz/categories/</loc>
