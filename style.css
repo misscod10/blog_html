@@ -138,3 +138,18 @@ padding: 20px;
   color: #00adee;
 
 }
+
+.contact_info {
+  background-color: #222;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+
+}
+
+.contact_info h2 {
+
+  font-size: 18px;
+  color: #00adee;
+
+}
