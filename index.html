@@ -1,130 +1,173 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>Santiago Pastor Serrano - Curriculum Vitae</title>
-  <link rel="stylesheet" href="style.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santiago Pastor Serrano - IT Professional</title>
+    <link rel="stylesheet" href="new_css.css">
 </head>
-
 <body>
-  <div class="cv-container">
-    <div class="profile-section">
-      <div class="profile-photo">
-      </div>
-      <div class="info">
-        <h1>Santiago Pastor Serrano</h1>
-        <p>Junior System Administrator / Junior Cybersecurity Specialist</p>
-      </div>
-    </div>
- 
-    <div class="studies">
-      <h2>Relevant Formation</h2>
-      <h3>IES Joan d'Àustria <b>SMX</b> </h3>
-      <p>Microinformatic Systems and Networking Technician: Fundamental training in <b>networking, operating systems, computer hardware, and programming</b>.</p>
-      <h3>IES Joan d'Àustria <b>ASIX</b> </h3>
-      <p>Specialization in <b>advanced networking, operating systems, computer hardware, and scripting,</b> enhancing technical capabilities for IT roles. </p>
-      <h3>Certified Kubernetes Administrator (Course)</h3>
-      <p>CKA: Grasping the basics of Kubernetes and the administration of a <b>Kubernetes cluster</b>.</p>
-      <h3>Cambridge English: C1 Advanced</h3>
-      <p>Cambridge English: Advanced (CAE), <b>C1 Level</b> - Advanced proficiency in English (CEFR), achieved <b>08/08/2020</b>.</p>
-    </div>
-        
-    <div class="previous-experience">
-      <h2>Previous Professional Experiences</h2>
-      <h3>DERMO Pharmacie and Perfumes (Warehouse Worker) July 2019 - Aug. 2019</h3>
-      <p>Helping with <b>warehouse operations</b> as a summer job.</p>
-      <h3>Sosmatic (IT Support) Nov. 2020 - Apr. 2021</h3>  
-      <p>Specialized in providing technical assistance for <b>medium to large-sized companies</b>, ensuring <b>IT systems performance and user support.</b></p>
-      <h3>PUE Proyecto Universidad Empresa (Internal IT support) May. 2022 - Present</h3>
-        <p>Working as an <b>IT Support operative</b> for internal technical issues, managing a server cluster, and also some development of internal tools and scripts to automate processes by using <b>Ansible</b> and <b>Bash</b> scripting. </p>
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="spinner">
+        <div class="spinner-circle"></div>
     </div>
 
-    <div class="projects">
-      <h2>Personal Projects</h2>
-      <p>The following projects are WIP and can be found inside my github repositories:</p>
-      <h3>VPN Server</h3>
-      <p>An ARM Oracle cloud instance with an Openvpn server installed and a couple of scripts for ease of use with the Linux OpenVPN CLI client.</p>
-      <h3>My dotfiles</h3>
-      <p>A library of my config files for different programs that I use in my Arch Linux daily driver (Main computer) for ease of reinstallation of the OS.</p>
-      <h3>Webpage</h3>
-      <p>This webpage, which you are currently visiting, is a personal project that I have been working on for a while, using HTML, CSS and hosting it on github. <br><br>
-        At first it was a wordpress webpage, then I started converting my notes written in markdown of different proyects into html using hugo and, finally, I turned it into my personal CV written in HTML and CSS.</p>
-    </div> 
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Santiago Pastor Serrano</div>
+            <ul class="nav-menu">
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+                <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+                <li><a href="#blog" data-i18n="nav_blog">Blog</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+            </ul>
+            <div class="language-switcher">
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="ca">Català</option>
+                </select>
+            </div>
+        </div>
+    </nav>
 
-    <div class="proficiencies"><h2>Relevant Proficiencies</h2> </div>
-    <div class="skill-chart">
-       
-      <div class="skill">
-         <h2>Networking</h2>
-         <div class="skill-meter">
-           <div class="skill-level" style="width: 60%;"></div>
-         </div>
-       </div>
-       
-       <div class="skill">
-         <h2>Windows</h2>
-         <div class="skill-meter">
-           <div class="skill-level" style="width: 65%;"></div>
-         </div>
-       </div>
-       
-       <div class="skill">
-         <h2>Linux</h2>
-         <div class="skill-meter">
-           <div class="skill-level" style="width: 70%;"></div>
-         </div>
-       </div>
-       
-       <div class="skill">
-         <h2>Ansible</h2>
-         <div class="skill-meter">
-           <div class="skill-level" style="width: 90%;"></div>
-         </div>
-       </div>
-       
-       <div class="skill">
-         <h2>Vim/Neovim</h2>
-         <div class="skill-meter">
-           <div class="skill-level" style="width: 65%;"></div>
-         </div>
-       </div>
-       
-       <div class="skill">
-         <h2>Python</h2>
-         <div class="skill-meter">
-           <div class="skill-level" style="width: 80%;"></div>
-         </div>
-       </div> 
-       
-       <div class="skill">
-        <h2>Bash</h2>
-         <div class="skill-meter">
-           <div class="skill-level" style="width: 75%;"></div>
-         </div>
-       </div>
-       
-       <div class="skill">
-         <h2>Html/Css</h2>
-         <div class="skill-meter">
-           <div class="skill-level" style="width: 70%;"></div>
-         </div>
-       </div>
-       
-       <div class="skill">
-         <h2>Containers</h2>
-         <div class="skill-meter">
-           <div class="skill-level" style="width: 75%;"></div>
-         </div>
-       </div>
-    </div>
-   <div class="contact_info">
-    <h2>Contact info</h2>
-    <p><b>Email: </b>misscod10@gmail.com</p>
-    <p><b>Github: </b><a href="https://github.com/misscod10">https://github.com/misscod10</a></p>
-    <p><b>Linkedin: </b><a href="https://www.linkedin.com/in/santiago-pastor-serrano-75a5641a9/">https://www.linkedin.com/in/santiago-pastor-serrano-75a5641a9/</a>
-    <p><b>CV: </b>Click <a href="./Santiago-Pastor-Serrano.pdf">ME</a>
-    <p><b>Phone: </b>+34 634 88 01 57</p>
-   </div>
-  </div>
-</body>
-</html>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="./me.jpg" alt="Profile Picture" class="hero-photo">
+            <h1 data-i18n="hero_title">Santiago Pastor Serrano</h1>
+            <p class="subtitle" data-i18n="hero_subtitle">IT & Cybersecurity Professional</p>
+            <p class="tagline" data-i18n="hero_tagline">Building secure systems. Learning continuously. Solving problems.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 data-i18n="about_title">About Me</h2>
+            <p data-i18n="about_text">Professional summary goes here. Share your passion for IT/cybersecurity, what drives you, and your career goals. Mention any relevant education or certifications you're pursuing.</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 data-i18n="skills_title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 data-i18n="skills_tech">Technical Skills</h3>
+                    <ul id="technical-skills-list">
+                        <li>Loading...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 data-i18n="education_title">Education & Certifications</h2>
+            <ul id="certifications-list">
+                <li>Loading...</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 data-i18n="experience_title">Professional Experience</h2>
+            <div id="experiences-list">
+                <p>Loading...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 data-i18n="projects_title">Projects & Lab Work</h2>
+            <div class="projects-grid" id="projects-grid">
+                <p>Loading projects...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 data-i18n="blog_title">Latest Articles</h2>
+            <div class="blog-posts" id="blog-posts">
+                <p>Loading articles...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 data-i18n="contact_title">Get In Touch</h2>
+            <div class="contact-content">
+                <p data-i18n="contact_intro">I'm always interested in connecting with professionals and discussing opportunities in IT and cybersecurity.</p>
+                <div class="contact-info">
+                    <p><strong data-i18n="contact_email">Email:</strong> misscod10@gmail.com</p>
+                    <p><strong data-i18n="contact_phone">Phone:</strong> +34 634 88 01 57</p>
+                    <p><strong data-i18n="contact_location">Location:</strong> Spain</p>
+                </div>
+                <div class="contact-links">
+                    <a href="https://github.com/misscod10" class="contact-link" data-i18n="contact_github">GitHub</a>
+                    <a href="https://www.linkedin.com/in/santiago-pastor-serrano-75a5641a9/" class="contact-link" data-i18n="contact_linkedin">LinkedIn</a>
+                    <a href="./Santiago-Pastor-Serrano.pdf" class="contact-link cv-download" download data-i18n="contact_cv">Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Santiago Pastor Serrano. <span data-i18n="footer_text">All rights reserved.</span></p>
+            <div class="footer-contact">
+                <a href="mailto:misscod10@gmail.com" class="footer-link">Email</a>
+                <a href="https://github.com/misscod10" class="footer-link" data-i18n="contact_github">GitHub</a>
+                <a href="https://www.linkedin.com/in/santiago-pastor-serrano-75a5641a9/" class="footer-link" data-i18n="contact_linkedin">LinkedIn</a>
+                <a href="./Santiago-Pastor-Serrano.pdf" class="footer-link" download data-i18n="contact_cv">CV</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hide loading spinner on page load -->
+    <script>
+        window.addEventListener('load', function() {
+            const spinner = document.getElementById('loading-spinner');
+            if (spinner) {
+                spinner.classList.add('hidden');
+            }
+        });
+
+        // Hide sticky footer when Contact section is visible
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactSection = document.getElementById('contact');
+            const footer = document.querySelector('.footer');
+            
+            if (contactSection && footer) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            footer.classList.add('hidden-footer');
+                        } else {
+                            footer.classList.remove('hidden-footer');
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                observer.observe(contactSection);
+            }
+        });
+    </script>
+
+    <script src="translations.js"></script>

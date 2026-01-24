@@ -1,0 +1,298 @@
+{
+  "en": {
+    "nav_home": "Home",
+    "nav_about": "About",
+    "nav_skills": "Skills",
+    "nav_projects": "Projects",
+    "nav_blog": "Blog",
+    "nav_contact": "Contact",
+    "hero_title": "Santiago Pastor Serrano",
+    "hero_subtitle": "Junior System Administrator & Cybersecurity Specialist",
+    "hero_tagline": "Building secure systems. Learning continuously. Solving problems.",
+    "about_title": "About Me",
+    "about_text": "I'm a Junior System Administrator and Cybersecurity Specialist with training in networking, operating systems, and scripting. Passionate about IT infrastructure, security, and automation. Currently working as IT Support at PUE with experience in server management and automation using Ansible and Bash.",
+    "skills_title": "Skills & Expertise",
+    "skills_tech": "Technical Skills",
+    "skills_security": "Security & Specialization",
+    "education_title": "Education & Certifications",
+    "experience_title": "Professional Experience",
+    "technical_skills": ["Linux Administration", "Windows Administration", "Networking", "Python", "Bash Scripting", "Ansible Automation", "Docker & Container Technology", "Vim/Neovim", "HTML/CSS"],
+    "certifications": [
+      {
+        "title": "SMX - Microinformatic Systems and Networking Technician",
+        "school": "IES Joan d'Àustria",
+        "description": "Fundamental training in networking, operating systems, computer hardware, and programming."
+      },
+      {
+        "title": "ASIX - Advanced Networking and Systems Specialization",
+        "school": "IES Joan d'Àustria",
+        "description": "Specialization in advanced networking, operating systems, computer hardware, and scripting, enhancing technical capabilities for IT roles."
+      },
+      {
+        "title": "Certified Kubernetes Administrator (CKA) Course",
+        "school": "Linux Foundation",
+        "description": "Grasping the basics of Kubernetes and the administration of a Kubernetes cluster."
+      },
+      {
+        "title": "Cambridge English C1 Advanced",
+        "school": "Cambridge",
+        "description": "Advanced proficiency in English (CEFR), achieved 08/08/2020."
+      }
+    ],
+    "experience_title": "Professional Experience",
+    "experiences": [
+      {
+        "position": "IT Support",
+        "company": "PUE Proyecto Universidad Empresa",
+        "period": "May 2022 - April 2024",
+        "description": "Worked as an IT Support operative for internal technical issues, managed a server cluster, and developed internal tools and scripts to automate processes using Ansible and Bash scripting."
+      },
+      {
+        "position": "IT Support Internship (SMX Program)",
+        "company": "Sosmatic",
+        "period": "November 2020 - April 2021",
+        "description": "Practical internship as part of SMX curriculum. Specialized in providing technical assistance for medium to large-sized companies, ensuring IT systems performance and user support."
+      },
+      {
+        "position": "Warehouse Worker",
+        "company": "DERMO Pharmacie and Perfumes",
+        "period": "July 2019 - August 2019",
+        "description": "Helped with warehouse operations as a summer job."
+      }
+    ],
+    "projects_title": "Projects & Lab Work",
+    "project_tech_label": "Technologies:",
+    "projects": [
+      {
+        "title": "VPN Server",
+        "tech": "Linux, OpenVPN, ARM Oracle Cloud, Bash",
+        "description": "Deployed an ARM Oracle cloud instance with OpenVPN server and custom scripts for easy Linux CLI client usage and management."
+      },
+      {
+        "title": "Dotfiles Configuration Library",
+        "tech": "Arch Linux, Bash, Configuration Management",
+        "description": "Created a comprehensive collection of configuration files for various programs used in Arch Linux daily driver setup for efficient OS reinstallation."
+      },
+      {
+        "title": "Personal Website & CV",
+        "tech": "HTML, CSS, JavaScript, GitHub Pages, Multilingual Support",
+        "description": "Evolved from WordPress to Hugo-based markdown conversion to custom HTML/CSS CV. Now a professional multilingual portfolio with full internationalization support."
+      }
+    ],
+    "blog_title": "Latest Articles",
+    "blog_published": "Published:",
+    "blog_posts": [
+      {
+        "title": "My Journey in System Administration",
+        "date": "January 24, 2026",
+        "excerpt": "Sharing my experience transitioning from helpdesk support to system administration and the tools that made the difference in my career growth."
+      }
+    ],
+    "contact_title": "Get In Touch",
+    "contact_intro": "I'm always interested in connecting with professionals and discussing opportunities in IT infrastructure and cybersecurity.",
+    "contact_email": "Email:",
+    "contact_phone": "Phone:",
+    "contact_location": "Location:",
+    "contact_github": "GitHub",
+    "contact_linkedin": "LinkedIn",
+    "contact_cv": "Download CV",
+    "footer_text": "All rights reserved."
+  },
+  "es": {
+    "nav_home": "Inicio",
+    "nav_about": "Acerca de",
+    "nav_skills": "Habilidades",
+    "nav_projects": "Proyectos",
+    "nav_blog": "Blog",
+    "nav_contact": "Contacto",
+    "hero_title": "Santiago Pastor Serrano",
+    "hero_subtitle": "Administrador de Sistemas Junior & Especialista en Ciberseguridad",
+    "hero_tagline": "Construyendo sistemas seguros. Aprendiendo continuamente. Resolviendo problemas.",
+    "about_title": "Acerca de Mí",
+    "about_text": "Soy Administrador de Sistemas Junior y Especialista en Ciberseguridad con formación en redes, sistemas operativos y scripting. Apasionado por infraestructura TI, seguridad y automatización. Actualmente trabajando como Soporte TI en PUE con experiencia en gestión de servidores y automatización usando Ansible y Bash.",
+    "skills_title": "Habilidades y Experiencia",
+    "skills_tech": "Habilidades Técnicas",
+    "skills_security": "Seguridad y Especialización",
+    "education_title": "Educación y Certificaciones",
+    "technical_skills": ["Administración Linux", "Administración Windows", "Redes", "Python", "Scripting Bash", "Automatización Ansible", "Docker y Tecnología de Contenedores", "Vim/Neovim", "HTML/CSS"],
+    "certifications": [
+      {
+        "title": "SMX - Técnico en Sistemas Microinformáticos y Redes",
+        "school": "IES Joan d'Àustria",
+        "description": "Formación fundamental en redes, sistemas operativos, hardware de computadoras y programación."
+      },
+      {
+        "title": "ASIX - Especialización en Redes y Sistemas Avanzados",
+        "school": "IES Joan d'Àustria",
+        "description": "Especialización en redes avanzadas, sistemas operativos, hardware de computadoras y scripting, mejorando las capacidades técnicas para roles de TI."
+      },
+      {
+        "title": "Certified Kubernetes Administrator (CKA) Course",
+        "school": "Linux Foundation",
+        "description": "Comprendiendo los conceptos básicos de Kubernetes y la administración de un cluster de Kubernetes."
+      },
+      {
+        "title": "Cambridge English C1 Advanced",
+        "school": "Cambridge",
+        "description": "Proficiencia avanzada en inglés (CEFR), conseguida 08/08/2020."
+      }
+    ],
+    "experience_title": "Experiencia Profesional",
+    "experiences": [
+      {
+        "position": "Soporte TI",
+        "company": "PUE Proyecto Universidad Empresa",
+        "period": "Mayo 2022 - Abril 2024",
+        "description": "Trabajé como operativo de Soporte TI para problemas técnicos internos, gestioné un cluster de servidores, y desarrollé herramientas internas y scripts para automatizar procesos usando Ansible y scripting Bash."
+      },
+      {
+        "position": "Prácticas de Soporte TI (Ciclo SMX)",
+        "company": "Sosmatic",
+        "period": "Noviembre 2020 - Abril 2021",
+        "description": "Prácticas profesionales como parte del currículo SMX. Especializado en proporcionar asistencia técnica para empresas medianas a grandes, garantizando el rendimiento de sistemas TI y soporte al usuario."
+      },
+      {
+        "position": "Trabajador de Almacén",
+        "company": "DERMO Pharmacie and Perfumes",
+        "period": "Julio 2019 - Agosto 2019",
+        "description": "Ayudé con las operaciones del almacén como trabajo de verano."
+      }
+    ],
+    "projects_title": "Proyectos y Trabajo de Laboratorio",
+    "project_tech_label": "Tecnologías:",
+    "projects": [
+      {
+        "title": "Servidor VPN",
+        "tech": "Linux, OpenVPN, ARM Oracle Cloud, Bash",
+        "description": "Implementé una instancia ARM en Oracle Cloud con servidor OpenVPN y scripts personalizados para facilitar el uso del cliente Linux CLI."
+      },
+      {
+        "title": "Biblioteca de Configuraciones Dotfiles",
+        "tech": "Arch Linux, Bash, Gestión de Configuración",
+        "description": "Creé una colección completa de archivos de configuración para varios programas utilizados en la configuración diaria de Arch Linux para reinstalación eficiente del SO."
+      },
+      {
+        "title": "Sitio Web Personal y CV",
+        "tech": "HTML, CSS, JavaScript, GitHub Pages, Soporte Multilingüe",
+        "description": "Evolucionó desde WordPress a conversión basada en Hugo con markdown hasta CV personalizado HTML/CSS. Ahora un portafolio profesional multilingüe con soporte completo de internacionalización."
+      }
+    ],
+    "blog_title": "Artículos Recientes",
+    "blog_published": "Publicado:",
+    "blog_posts": [
+      {
+        "title": "Mi Viaje en Administración de Sistemas",
+        "date": "24 de Enero de 2026",
+        "excerpt": "Compartiendo mi experiencia haciendo la transición de soporte helpdesk a administración de sistemas y las herramientas que marcaron la diferencia en mi crecimiento profesional."
+      }
+    ],
+    "contact_title": "Ponte en Contacto",
+    "contact_intro": "Siempre estoy interesado en conectar con profesionales y discutir oportunidades en infraestructura TI y ciberseguridad.",
+    "contact_email": "Correo electrónico:",
+    "contact_phone": "Teléfono:",
+    "contact_location": "Ubicación:",
+    "contact_github": "GitHub",
+    "contact_linkedin": "LinkedIn",
+    "contact_cv": "Descargar CV",
+    "footer_text": "Todos los derechos reservados."
+  },
+  "ca": {
+    "nav_home": "Inici",
+    "nav_about": "Sobre Mi",
+    "nav_skills": "Habilitats",
+    "nav_projects": "Projectes",
+    "nav_blog": "Blog",
+    "nav_contact": "Contacte",
+    "hero_title": "Santiago Pastor Serrano",
+    "hero_subtitle": "Administrador de Sistemes Junior & Especialista en Ciberseguretat",
+    "hero_tagline": "Construint sistemes segurs. Aprenent contínuament. Resolent problemes.",
+    "about_title": "Sobre Mi",
+    "about_text": "Soc Administrador de Sistemes Junior i Especialista en Ciberseguretat amb formació en xarxes, sistemes operatius i scripting. Apasionat per infraestructura TI, seguretat i automatització. Actualment treballo com a Suport TI a PUE amb experiència en gestió de servidors i automatització usant Ansible i Bash.",
+    "skills_title": "Habilitats i Experiència",
+    "skills_tech": "Habilitats Tècniques",
+    "skills_security": "Seguretat i Especialització",
+    "education_title": "Educació i Certificacions",
+    "technical_skills": ["Administració Linux", "Administració Windows", "Xarxes", "Python", "Scripting Bash", "Automatització Ansible", "Docker i Tecnologia de Contenidors", "Vim/Neovim", "HTML/CSS"],
+    "certifications": [
+      {
+        "title": "SMX - Tècnic en Sistemes Microinformàtics i Xarxes",
+        "school": "IES Joan d'Àustria",
+        "description": "Formació fonamental en xarxes, sistemes operatius, hardware de computadores i programació."
+      },
+      {
+        "title": "ASIX - Especialització en Xarxes i Sistemes Avançats",
+        "school": "IES Joan d'Àustria",
+        "description": "Especialització en xarxes avançades, sistemes operatius, hardware de computadores i scripting, millorant les capacitats tècniques per a rols de TI."
+      },
+      {
+        "title": "Certified Kubernetes Administrator (CKA) Course",
+        "school": "Linux Foundation",
+        "description": "Comprensió dels conceptes bàsics de Kubernetes i l'administració d'un cluster de Kubernetes."
+      },
+      {
+        "title": "Cambridge English C1 Advanced",
+        "school": "Cambridge",
+        "description": "Proficiència avançada en anglès (CEFR), aconseguida 08/08/2020."
+      }
+    ],
+    "experience_title": "Experiència Professional",
+    "experiences": [
+      {
+        "position": "Suport TI",
+        "company": "PUE Proyecto Universidad Empresa",
+        "period": "Maig 2022 - Abril 2024",
+        "description": "Vaig treballar com a operatiu de Suport TI per a problemes tècnics interns, vaig gestionar un cluster de servidors, i vaig desenvolupar eines internes i scripts per automatitzar processos usant Ansible i scripting Bash."
+      },
+      {
+        "position": "Pràctiques de Suport TI (Cicle SMX)",
+        "company": "Sosmatic",
+        "period": "Novembre 2020 - Abril 2021",
+        "description": "Pràctiques professionals com a part del currículum SMX. Especialitzat en proporcionar assistència tècnica per a empreses mitjanes a grans, garantint el rendiment de sistemes TI i suport a l'usuari."
+      },
+      {
+        "position": "Treballador d'Almacén",
+        "company": "DERMO Pharmacie and Perfumes",
+        "period": "Juliol 2019 - Agost 2019",
+        "description": "Vaig ajudar amb les operacions de l'almacén com a treball d'estiu."
+      }
+    ],
+    "projects_title": "Projectes i Treball de Laboratori",
+    "project_tech_label": "Tecnologies:",
+    "projects": [
+      {
+        "title": "Servidor VPN",
+        "tech": "Linux, OpenVPN, ARM Oracle Cloud, Bash",
+        "description": "Vaig implementar una instància ARM en Oracle Cloud amb servidor OpenVPN i scripts personalitzats per facilitar l'ús del client Linux CLI."
+      },
+      {
+        "title": "Biblioteca de Configuracions Dotfiles",
+        "tech": "Arch Linux, Bash, Gestió de Configuració",
+        "description": "Vaig crear una col·lecció completa de fitxers de configuració per a diversos programes utilitzats en la configuració diària d'Arch Linux per a reinstal·lació eficient del SO."
+      },
+      {
+        "title": "Lloc Web Personal i CV",
+        "tech": "HTML, CSS, JavaScript, GitHub Pages, Suport Multilingüe",
+        "description": "Va evolucionar des de WordPress a conversió basada en Hugo amb markdown fins a CV personalitzat HTML/CSS. Ara un portafoli professional multilingüe amb suport complet d'internacionalització."
+      }
+    ],
+    "blog_title": "Articles Recents",
+    "blog_published": "Publicat:",
+    "blog_posts": [
+      {
+        "title": "El Meu Viatge en Administració de Sistemes",
+        "date": "24 de Gener de 2026",
+        "excerpt": "Compartint la meva experiència fent la transició de suport helpdesk a administració de sistemes i les eines que van marcar la diferència en el meu creixement professional."
+      }
+    ],
+    "contact_title": "Posate en Contacte",
+    "contact_intro": "Sempre m'interessa connectar amb professionals i discutir oportunitats en infraestructura TI i ciberseguretat.",
+    "contact_email": "Correu electrònic:",
+    "contact_phone": "Telèfon:",
+    "contact_location": "Ubicació:",
+    "contact_github": "GitHub",
+    "contact_linkedin": "LinkedIn",
+    "contact_cv": "Descarregar CV",
+    "footer_text": "Tots els drets reservats."
+  }
+}
+

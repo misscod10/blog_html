@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Santiago Pastor Serrano - Curriculum Vitae</title>
+  <link rel="stylesheet" href="style.css"> 
+</head>
+
+<body>
+  <div class="cv-container">
+    <div class="profile-section">
+      <div class="profile-photo">
+      </div>
+      <div class="info">
+        <h1>Santiago Pastor Serrano</h1>
+        <p>Junior System Administrator / Junior Cybersecurity Specialist</p>
+      </div>
+    </div>
+ 
+    <div class="studies">
+      <h2>Relevant Formation</h2>
+      <h3>IES Joan d'Àustria <b>SMX</b> </h3>
+      <p>Microinformatic Systems and Networking Technician: Fundamental training in <b>networking, operating systems, computer hardware, and programming</b>.</p>
+      <h3>IES Joan d'Àustria <b>ASIX</b> </h3>
+      <p>Specialization in <b>advanced networking, operating systems, computer hardware, and scripting,</b> enhancing technical capabilities for IT roles. </p>
+      <h3>Certified Kubernetes Administrator (Course)</h3>
+      <p>CKA: Grasping the basics of Kubernetes and the administration of a <b>Kubernetes cluster</b>.</p>
+      <h3>Cambridge English: C1 Advanced</h3>
+      <p>Cambridge English: Advanced (CAE), <b>C1 Level</b> - Advanced proficiency in English (CEFR), achieved <b>08/08/2020</b>.</p>
+    </div>
+        
+    <div class="previous-experience">
+      <h2>Previous Professional Experiences</h2>
+      <h3>DERMO Pharmacie and Perfumes (Warehouse Worker) July 2019 - Aug. 2019</h3>
+      <p>Helping with <b>warehouse operations</b> as a summer job.</p>
+      <h3>Sosmatic (IT Support) Nov. 2020 - Apr. 2021</h3>  
+      <p>Specialized in providing technical assistance for <b>medium to large-sized companies</b>, ensuring <b>IT systems performance and user support.</b></p>
+      <h3>PUE Proyecto Universidad Empresa (Internal IT support) May. 2022 - Present</h3>
+        <p>Working as an <b>IT Support operative</b> for internal technical issues, managing a server cluster, and also some development of internal tools and scripts to automate processes by using <b>Ansible</b> and <b>Bash</b> scripting. </p>
+    </div>
+
+    <div class="projects">
+      <h2>Personal Projects</h2>
+      <p>The following projects are WIP and can be found inside my github repositories:</p>
+      <h3>VPN Server</h3>
+      <p>An ARM Oracle cloud instance with an Openvpn server installed and a couple of scripts for ease of use with the Linux OpenVPN CLI client.</p>
+      <h3>My dotfiles</h3>
+      <p>A library of my config files for different programs that I use in my Arch Linux daily driver (Main computer) for ease of reinstallation of the OS.</p>
+      <h3>Webpage</h3>
+      <p>This webpage, which you are currently visiting, is a personal project that I have been working on for a while, using HTML, CSS and hosting it on github. <br><br>
+        At first it was a wordpress webpage, then I started converting my notes written in markdown of different proyects into html using hugo and, finally, I turned it into my personal CV written in HTML and CSS.</p>
+    </div> 
+
+    <div class="proficiencies"><h2>Relevant Proficiencies</h2> </div>
+    <div class="skill-chart">
+       
+      <div class="skill">
+         <h2>Networking</h2>
+         <div class="skill-meter">
+           <div class="skill-level" style="width: 60%;"></div>
+         </div>
+       </div>
+       
+       <div class="skill">
+         <h2>Windows</h2>
+         <div class="skill-meter">
+           <div class="skill-level" style="width: 65%;"></div>
+         </div>
+       </div>
+       
+       <div class="skill">
+         <h2>Linux</h2>
+         <div class="skill-meter">
+           <div class="skill-level" style="width: 70%;"></div>
+         </div>
+       </div>
+       
+       <div class="skill">
+         <h2>Ansible</h2>
+         <div class="skill-meter">
+           <div class="skill-level" style="width: 90%;"></div>
+         </div>
+       </div>
+       
+       <div class="skill">
+         <h2>Vim/Neovim</h2>
+         <div class="skill-meter">
+           <div class="skill-level" style="width: 65%;"></div>
+         </div>
+       </div>
+       
+       <div class="skill">
+         <h2>Python</h2>
+         <div class="skill-meter">
+           <div class="skill-level" style="width: 80%;"></div>
+         </div>
+       </div> 
+       
+       <div class="skill">
+        <h2>Bash</h2>
+         <div class="skill-meter">
+           <div class="skill-level" style="width: 75%;"></div>
+         </div>
+       </div>
+       
+       <div class="skill">
+         <h2>Html/Css</h2>
+         <div class="skill-meter">
+           <div class="skill-level" style="width: 25%;"></div>
+         </div>
+       </div>
+       
+       <div class="skill">
+         <h2>Docker/Container Technology</h2>
+         <div class="skill-meter">
+           <div class="skill-level" style="width: 45%;"></div>
+         </div>
+       </div>
+    </div>
+   <div class="contact_info">
+    <h2>Contact info</h2>
+    <p><b>Email: </b>misscod10@gmail.com</p>
+    <p><b>Github: </b><a href="https://github.com/misscod10">https://github.com/misscod10</a></p>
+    <p><b>Linkedin: </b><a href="https://www.linkedin.com/in/santiago-pastor-serrano-75a5641a9/">https://www.linkedin.com/in/santiago-pastor-serrano-75a5641a9/</a>
+    <p><b>CV: </b>Click <a href="./Santiago-Pastor-Serrano.pdf">ME</a>
+    <p><b>Phone: </b>+34 634 88 01 57</p>
+   </div>
+  </div>
+</body>
+</html>
