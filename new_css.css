@@ -597,36 +597,47 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 8px 0;
+    }
+
     .nav-container {
         flex-direction: column;
-        gap: 15px;
-        padding: 10px 15px;
+        gap: 5px;
+        padding: 5px 10px;
     }
 
     .logo {
-        font-size: 20px;
+        font-size: 16px;
+        margin-bottom: 5px;
     }
 
     .nav-menu {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
-        font-size: 13px;
+        gap: 6px;
+        font-size: 10px;
         padding: 0;
+        width: 100%;
     }
 
     .nav-menu li {
         margin: 0;
     }
 
+    .nav-menu a {
+        padding: 3px 6px;
+    }
+
     .language-switcher {
         margin-left: 0;
-        margin-top: 5px;
+        margin-top: 0;
+        align-self: center;
     }
 
     .language-switcher select {
-        padding: 6px 10px;
-        font-size: 13px;
+        padding: 3px 6px;
+        font-size: 10px;
     }
 
     .hero {
@@ -695,23 +706,62 @@ body {
     }
 
     .footer {
-        padding: 15px 10px;
-        font-size: 12px;
+        padding: 10px 8px;
+        font-size: 10px;
     }
 
     .footer-content {
         flex-direction: column;
-        gap: 15px;
+        gap: 8px;
         text-align: center;
+    }
+
+    .footer-content p {
+        font-size: 10px;
     }
 
     .footer-contact {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 6px;
     }
 
     .footer-link {
-        font-size: 13px;
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+}
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 14px;
+    }
+
+    .nav-menu {
+        gap: 5px;
+        font-size: 9px;
+    }
+
+    .nav-menu a {
+        padding: 3px 5px;
+    }
+
+    .language-switcher select {
+        padding: 3px 6px;
+        font-size: 9px;
+    }
+
+    .footer {
+        padding: 8px 5px;
+        font-size: 9px;
+    }
+
+    .footer-content p {
+        font-size: 9px;
+    }
+
+    .footer-link {
+        font-size: 9px;
+        padding: 3px 6px;
     }
 }
