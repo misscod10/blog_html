@@ -49,10 +49,14 @@ function renderContent() {
     if (certificationsList && currentData.certifications) {
         certificationsList.innerHTML = currentData.certifications
             .map(cert => `
-                <li>
-                    <strong>${cert.title}</strong>
-                    <p class="cert-school">${cert.school}</p>
-                    <p>${cert.description}</p>
+                <li class="certification-item">
+                    <div class="cert-timeline-dot"></div>
+                    <div class="cert-content">
+                        <strong>${cert.title}</strong>
+                        <p class="cert-school">${cert.school}</p>
+                        ${cert.period ? `<p class="cert-period">${cert.period}</p>` : ''}
+                        <p>${cert.description}</p>
+                    </div>
                 </li>
             `)
             .join('');

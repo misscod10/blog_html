@@ -145,7 +145,10 @@
         window.addEventListener('load', function() {
             const spinner = document.getElementById('loading-spinner');
             if (spinner) {
-                spinner.classList.add('hidden');
+                // Wait 1 second before hiding the spinner
+                setTimeout(function() {
+                    spinner.classList.add('hidden');
+                }, 500);
             }
         });
 

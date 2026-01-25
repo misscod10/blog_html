@@ -21,22 +21,32 @@
       {
         "title": "SMX - Microinformatic Systems and Networking Technician",
         "school": "IES Joan d'Àustria",
+        "period": "2018 - 2020",
         "description": "Fundamental training in networking, operating systems, computer hardware, and programming."
+      },
+      {
+        "title": "Cambridge English C1 Advanced",
+        "school": "Cambridge",
+        "period": "2020",
+        "description": "Advanced proficiency in English (CEFR). Achieved 08/08/2020."
       },
       {
         "title": "ASIX - Advanced Networking and Systems Specialization",
         "school": "IES Joan d'Àustria",
+        "period": "2020 - 2022",
         "description": "Specialization in advanced networking, operating systems, computer hardware, and scripting, enhancing technical capabilities for IT roles."
       },
       {
         "title": "Certified Kubernetes Administrator (CKA) Course",
         "school": "Linux Foundation",
+        "period": "2023",
         "description": "Grasping the basics of Kubernetes and the administration of a Kubernetes cluster."
       },
       {
-        "title": "Cambridge English C1 Advanced",
-        "school": "Cambridge",
-        "description": "Advanced proficiency in English (CEFR), achieved 08/08/2020."
+        "title": "Cybersecurity Specialization Course",
+        "school": "IOC (Remote)",
+        "period": "September 2024 - January 2026",
+        "description": "Specialized training in cybersecurity principles, threat analysis, vulnerability management, and security best practices for IT infrastructure."
       }
     ],
     "experiences": [
@@ -118,22 +128,32 @@
       {
         "title": "SMX - Técnico en Sistemas Microinformáticos y Redes",
         "school": "IES Joan d'Àustria",
+        "period": "2018 - 2020",
         "description": "Formación fundamental en redes, sistemas operativos, hardware de computadoras y programación."
+      },
+      {
+        "title": "Cambridge English C1 Advanced",
+        "school": "Cambridge",
+        "period": "2020",
+        "description": "Proficiencia avanzada en inglés (CEFR). Conseguida 08/08/2020."
       },
       {
         "title": "ASIX - Especialización en Redes y Sistemas Avanzados",
         "school": "IES Joan d'Àustria",
+        "period": "2020 - 2022",
         "description": "Especialización en redes avanzadas, sistemas operativos, hardware de computadoras y scripting, mejorando las capacidades técnicas para roles de TI."
       },
       {
         "title": "Certified Kubernetes Administrator (CKA) Course",
         "school": "Linux Foundation",
+        "period": "2023",
         "description": "Comprendiendo los conceptos básicos de Kubernetes y la administración de un cluster de Kubernetes."
       },
       {
-        "title": "Cambridge English C1 Advanced",
-        "school": "Cambridge",
-        "description": "Proficiencia avanzada en inglés (CEFR), conseguida 08/08/2020."
+        "title": "Curso de Especialización en Ciberseguridad",
+        "school": "IOC (Remoto)",
+        "period": "Septiembre 2024 - Enero 2026",
+        "description": "Formación especializada en principios de ciberseguridad, análisis de amenazas, gestión de vulnerabilidades y mejores prácticas de seguridad para infraestructuras TI."
       }
     ],
     "experience_title": "Experiencia Profesional",
@@ -216,22 +236,32 @@
       {
         "title": "SMX - Tècnic en Sistemes Microinformàtics i Xarxes",
         "school": "IES Joan d'Àustria",
-        "description": "Formació fonamental en xarxes, sistemes operatius, hardware de computadores i programació."
-      },
-      {
-        "title": "ASIX - Especialització en Xarxes i Sistemes Avançats",
-        "school": "IES Joan d'Àustria",
-        "description": "Especialització en xarxes avançades, sistemes operatius, hardware de computadores i scripting, millorant les capacitats tècniques per a rols de TI."
-      },
-      {
-        "title": "Certified Kubernetes Administrator (CKA) Course",
-        "school": "Linux Foundation",
-        "description": "Comprensió dels conceptes bàsics de Kubernetes i l'administració d'un cluster de Kubernetes."
+        "period": "2018 - 2020",
+        "description": "Formació fonamental en xarxes, sistemes operatius, hardware de computadors i programació."
       },
       {
         "title": "Cambridge English C1 Advanced",
         "school": "Cambridge",
-        "description": "Proficiència avançada en anglès (CEFR), aconseguida 08/08/2020."
+        "period": "2020",
+        "description": "Proficiència avançada en anglès (CEFR). Aconseguida 08/08/2020."
+      },
+      {
+        "title": "ASIX - Especialització en Xarxes i Sistemes Avançats",
+        "school": "IES Joan d'Àustria",
+        "period": "2020 - 2022",
+        "description": "Especialització en xarxes avançades, sistemes operatius, hardware de computadors i scripting, millorant les capacitats tècniques per a rols de TI."
+      },
+      {
+        "title": "Certified Kubernetes Administrator (CKA) Course",
+        "school": "Linux Foundation",
+        "period": "2023",
+        "description": "Comprensió dels conceptes bàsics de Kubernetes i l'administració d'un cluster de Kubernetes."
+      },
+      {
+        "title": "Curs d'Especialització en Ciberseguretat",
+        "school": "IOC (Remot)",
+        "period": "Setembre 2024 - Gener 2026",
+        "description": "Formació especialitzada en principis de ciberseguretat, anàlisi de amenaces, gestió de vulnerabilitats i millors pràctiques de seguretat per a infraestructures TI."
       }
     ],
     "experience_title": "Experiència Professional",
