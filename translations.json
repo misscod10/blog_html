@@ -16,7 +16,7 @@
     "skills_security": "Security & Specialization",
     "education_title": "Education & Certifications",
     "experience_title": "Professional Experience",
-    "technical_skills": ["Linux Administration", "Windows Administration", "Networking", "Python", "Bash Scripting", "Ansible Automation", "Docker & Container Technology", "Vim/Neovim", "HTML/CSS"],
+    "technical_skills": ["Linux Administration", "Windows Administration", "Virtualization (VMs)", "Python", "Bash Scripting", "Ansible Automation", "Docker & Container Technology", "Vim/Neovim", "HTML/CSS"],
     "certifications": [
       {
         "title": "SMX - Microinformatic Systems and Networking Technician",
@@ -123,7 +123,7 @@
     "skills_tech": "Habilidades Técnicas",
     "skills_security": "Seguridad y Especialización",
     "education_title": "Educación y Certificaciones",
-    "technical_skills": ["Administración Linux", "Administración Windows", "Redes", "Python", "Scripting Bash", "Automatización Ansible", "Docker y Tecnología de Contenedores", "Vim/Neovim", "HTML/CSS"],
+    "technical_skills": ["Administración Linux", "Administración Windows", "Virtualización (VMs)", "Python", "Scripting Bash", "Automatización Ansible", "Docker y Tecnología de Contenedores", "Vim/Neovim", "HTML/CSS"],
     "certifications": [
       {
         "title": "SMX - Técnico en Sistemas Microinformáticos y Redes",
@@ -231,7 +231,7 @@
     "skills_tech": "Habilitats Tècniques",
     "skills_security": "Seguretat i Especialització",
     "education_title": "Educació i Certificacions",
-    "technical_skills": ["Administració Linux", "Administració Windows", "Xarxes", "Python", "Scripting Bash", "Automatització Ansible", "Docker i Tecnologia de Contenidors", "Vim/Neovim", "HTML/CSS"],
+    "technical_skills": ["Administració Linux", "Administració Windows", "Virtualització (VMs)", "Python", "Scripting Bash", "Automatització Ansible", "Docker i Tecnologia de Contenidors", "Vim/Neovim", "HTML/CSS"],
     "certifications": [
       {
         "title": "SMX - Tècnic en Sistemes Microinformàtics i Xarxes",

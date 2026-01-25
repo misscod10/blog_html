@@ -597,17 +597,65 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .nav-menu {
+    .nav-container {
+        flex-direction: column;
         gap: 15px;
-        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-size: 13px;
+        padding: 0;
+    }
+
+    .nav-menu li {
+        margin: 0;
+    }
+
+    .language-switcher {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
+    .language-switcher select {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 50px 15px;
     }
 
     .hero h1 {
-        font-size: 36px;
+        font-size: 28px;
     }
 
     .hero .subtitle {
-        font-size: 20px;
+        font-size: 18px;
+    }
+
+    .hero .tagline {
+        font-size: 14px;
+    }
+
+    .hero-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    section {
+        padding: 40px 15px !important;
     }
 
     .skills-grid {
@@ -618,12 +666,52 @@ body {
         grid-template-columns: 1fr;
     }
 
+    .certification-item {
+        padding: 15px;
+        padding-left: 40px;
+    }
+
+    .cert-timeline-dot {
+        left: 8px;
+        width: 16px;
+        height: 16px;
+        top: 20px;
+    }
+
+    .experience-item {
+        padding: 15px;
+    }
+
     .contact-links {
         flex-direction: column;
+        gap: 10px;
     }
 
     .contact-link {
         width: 100%;
         text-align: center;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .footer {
+        padding: 15px 10px;
+        font-size: 12px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .footer-contact {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .footer-link {
+        font-size: 13px;
     }
 }
