@@ -19,27 +19,27 @@
     "technical_skills": ["Linux Administration", "Windows Administration", "Virtualization (VMs)", "Python", "Bash Scripting", "Ansible Automation", "Docker & Container Technology", "Vim/Neovim", "HTML/CSS"],
     "certifications": [
       {
-        "title": "SMX - Microinformatic Systems and Networking Technician",
-        "school": "IES Joan d'Àustria",
-        "period": "2018 - 2020",
-        "description": "Fundamental training in networking, operating systems, computer hardware, and programming."
-      },
-      {
         "title": "Cambridge English C1 Advanced",
         "school": "Cambridge",
         "period": "2020",
         "description": "Advanced proficiency in English (CEFR). Achieved 08/08/2020."
       },
       {
+        "title": "SMX - Microinformatic Systems and Networking Technician",
+        "school": "IES Joan d'Àustria",
+        "period": "September 2019 - May 2021",
+        "description": "Fundamental training in networking, operating systems, computer hardware, and programming."
+      },
+      {
         "title": "ASIX - Advanced Networking and Systems Specialization",
         "school": "IES Joan d'Àustria",
-        "period": "2020 - 2022",
+        "period": "September 2021 - May 2023",
         "description": "Specialization in advanced networking, operating systems, computer hardware, and scripting, enhancing technical capabilities for IT roles."
       },
       {
         "title": "Certified Kubernetes Administrator (CKA) Course",
         "school": "Linux Foundation",
-        "period": "2023",
+        "period": "November 2023",
         "description": "Grasping the basics of Kubernetes and the administration of a Kubernetes cluster."
       },
       {
@@ -126,27 +126,27 @@
     "technical_skills": ["Administración Linux", "Administración Windows", "Virtualización (VMs)", "Python", "Scripting Bash", "Automatización Ansible", "Docker y Tecnología de Contenedores", "Vim/Neovim", "HTML/CSS"],
     "certifications": [
       {
-        "title": "SMX - Técnico en Sistemas Microinformáticos y Redes",
-        "school": "IES Joan d'Àustria",
-        "period": "2018 - 2020",
-        "description": "Formación fundamental en redes, sistemas operativos, hardware de computadoras y programación."
-      },
-      {
         "title": "Cambridge English C1 Advanced",
         "school": "Cambridge",
         "period": "2020",
         "description": "Proficiencia avanzada en inglés (CEFR). Conseguida 08/08/2020."
       },
       {
+        "title": "SMX - Técnico en Sistemas Microinformáticos y Redes",
+        "school": "IES Joan d'Àustria",
+        "period": "Septiembre 2019 - Mayo 2021",
+        "description": "Formación fundamental en redes, sistemas operativos, hardware de computadoras y programación."
+      },
+      {
         "title": "ASIX - Especialización en Redes y Sistemas Avanzados",
         "school": "IES Joan d'Àustria",
-        "period": "2020 - 2022",
+        "period": "Septiembre 2021 - Mayo 2023",
         "description": "Especialización en redes avanzadas, sistemas operativos, hardware de computadoras y scripting, mejorando las capacidades técnicas para roles de TI."
       },
       {
         "title": "Certified Kubernetes Administrator (CKA) Course",
         "school": "Linux Foundation",
-        "period": "2023",
+        "period": "Noviembre 2023",
         "description": "Comprendiendo los conceptos básicos de Kubernetes y la administración de un cluster de Kubernetes."
       },
       {
@@ -234,27 +234,27 @@
     "technical_skills": ["Administració Linux", "Administració Windows", "Virtualització (VMs)", "Python", "Scripting Bash", "Automatització Ansible", "Docker i Tecnologia de Contenidors", "Vim/Neovim", "HTML/CSS"],
     "certifications": [
       {
-        "title": "SMX - Tècnic en Sistemes Microinformàtics i Xarxes",
-        "school": "IES Joan d'Àustria",
-        "period": "2018 - 2020",
-        "description": "Formació fonamental en xarxes, sistemes operatius, hardware de computadors i programació."
-      },
-      {
         "title": "Cambridge English C1 Advanced",
         "school": "Cambridge",
         "period": "2020",
         "description": "Proficiència avançada en anglès (CEFR). Aconseguida 08/08/2020."
       },
       {
+        "title": "SMX - Tècnic en Sistemes Microinformàtics i Xarxes",
+        "school": "IES Joan d'Àustria",
+        "period": "Setembre 2019 - Maig 2021",
+        "description": "Formació fonamental en xarxes, sistemes operatius, hardware de computadors i programació."
+      },
+      {
         "title": "ASIX - Especialització en Xarxes i Sistemes Avançats",
         "school": "IES Joan d'Àustria",
-        "period": "2020 - 2022",
+        "period": "Setembre 2021 - Maig 2023",
         "description": "Especialització en xarxes avançades, sistemes operatius, hardware de computadors i scripting, millorant les capacitats tècniques per a rols de TI."
       },
       {
         "title": "Certified Kubernetes Administrator (CKA) Course",
         "school": "Linux Foundation",
-        "period": "2023",
+        "period": "Novembre 2023",
         "description": "Comprensió dels conceptes bàsics de Kubernetes i l'administració d'un cluster de Kubernetes."
       },
       {
