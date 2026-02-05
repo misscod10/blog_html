@@ -99,9 +99,10 @@ function renderContent() {
         blogPosts.innerHTML = currentData.blog_posts
             .map(post => `
                 <article class="blog-post">
-                    <h3>${post.title}</h3>
+                    <h3><a href="articulos/articulo01.html?id=${post.id}&lang=${currentLanguage}">${post.title}</a></h3>
                     <p class="blog-date"><span>${publishedLabel}</span> ${post.date}</p>
                     <p>${post.excerpt}</p>
+                    <p><a class="read-more" href="articulos/articulo01.html?id=${post.id}&lang=${currentLanguage}">Read more</a></p>
                 </article>
             `)
             .join('');

@@ -92,9 +92,11 @@
     "blog_published": "Published:",
     "blog_posts": [
       {
+        "id": "my-journey-2026",
         "title": "My Journey in System Administration",
         "date": "January 24, 2026",
-        "excerpt": "Sharing my experience transitioning from helpdesk support to system administration and the tools that made the difference in my career growth."
+        "excerpt": "Sharing my experience transitioning from helpdesk support to system administration and the tools that made the difference in my career growth.",
+        "content": ""
       }
     ],
     "contact_title": "Get In Touch",
@@ -200,9 +202,11 @@
     "blog_published": "Publicado:",
     "blog_posts": [
       {
+        "id": "my-journey-2026",
         "title": "Mi Viaje en Administración de Sistemas",
         "date": "24 de Enero de 2026",
-        "excerpt": "Compartiendo mi experiencia haciendo la transición de soporte helpdesk a administración de sistemas y las herramientas que marcaron la diferencia en mi crecimiento profesional."
+        "excerpt": "Compartiendo mi experiencia haciendo la transición de soporte helpdesk a administración de sistemas y las herramientas que marcaron la diferencia en mi crecimiento profesional.",
+        "content": ""
       }
     ],
     "contact_title": "Ponte en Contacto",
@@ -308,9 +312,11 @@
     "blog_published": "Publicat:",
     "blog_posts": [
       {
+        "id": "my-journey-2026",
         "title": "El Meu Viatge en Administració de Sistemes",
         "date": "24 de Gener de 2026",
-        "excerpt": "Compartint la meva experiència fent la transició de suport helpdesk a administració de sistemes i les eines que van marcar la diferència en el meu creixement professional."
+        "excerpt": "Compartint la meva experiència fent la transició de suport helpdesk a administració de sistemes i les eines que van marcar la diferència en el meu creixement professional.",
+        "content": ""
       }
     ],
     "contact_title": "Posate en Contacte",

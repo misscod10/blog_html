@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artículo</title>
+  <link rel="stylesheet" href="../new_css.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Santiago Pastor Serrano</div>
+      <div class="language-switcher">
+        <select id="languageSelect">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="ca">Català</option>
+        </select>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container article-page">
+    <a href="../index.html">← Back</a>
+    <h1 id="article-title">Loading...</h1>
+    <p id="article-date"></p>
+    <div id="article-content">Loading...</div>
+  </main>
+
+  <script>
+    // Read URL params
+    function getQueryParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    let lang = getQueryParam('lang') || localStorage.getItem('language') || 'en';
+    const postId = getQueryParam('id');
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const select = document.getElementById('languageSelect');
+      select.value = lang;
+      select.addEventListener('change', () => {
+        lang = select.value;
+        localStorage.setItem('language', lang);
+        loadAndRender();
+      });
+
+      await loadAndRender();
+    });
+
+    async function loadAndRender() {
+      try {
+        const res = await fetch('../translations.json');
+        const translations = await res.json();
+        const data = translations[lang] || translations['en'];
+        const posts = data.blog_posts || [];
+        const post = posts.find(p => p.id === postId);
+        const titleEl = document.getElementById('article-title');
+        const dateEl = document.getElementById('article-date');
+        const contentEl = document.getElementById('article-content');
+
+        if (!post) {
+          titleEl.textContent = 'Article not found';
+          dateEl.textContent = '';
+          contentEl.innerHTML = '<p>The requested article could not be found.</p>';
+          return;
+        }
+
+        titleEl.textContent = post.title;
+        dateEl.textContent = (data.blog_published || 'Published:') + ' ' + post.date;
+        contentEl.innerHTML = post.content || post.excerpt || '';
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  </script>
+</body>
+</html>
